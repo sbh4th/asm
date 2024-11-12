@@ -1,0 +1,77 @@
+/*-- scss:defaults --*/
+
+// fonts
+$font-family-sans-serif: "Lucida Sans", serif !default;
+
+$theme-blue: #377eb8;
+$theme-red: #e41a1c;
+$theme-green: #4daf4a;
+$theme-gray: #cccccc;
+$theme-white: #ffffff;
+
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+$font-family: 'Allura', cursive;
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+
+//$font-family-sans-serif: 'Libre Caslon Text', serif;
+
+//$mainFont: 'Libre Caslon Text', serif;
+
+/*-- scss:rules --*/
+
+.reveal .slide aside, .reveal .slide div.aside {
+  font-size: 0.5em // Force the change with !important
+}
+
+.blue {
+  color: $theme-blue;
+}
+
+.red {
+  color: $theme-red;
+}
+
+.green {
+  color: $theme-green;
+}
+
+.gray {
+  color: $theme-gray;
+}
+
+.white {
+  color: $theme-white;
+}
+
+.act {
+  font-family: Allura;
+  font-size: 300%;
+  color: $theme-white;
+}
+
+.table-striped {
+  > tbody > tr:nth-of-type(odd) > * {
+    background-color: #f2f2f2;
+  }
+}
+
+.large {
+   font-size: 1.5em;
+}
+
+/* alignment */
+
+.h2center h2 {
+  text-align: center;
+}
+
+.center body {
+  text-align: center;
+}
+
+/* color */
+.reveal h2 {
+  color: #1a78c2;
+}

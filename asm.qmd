@@ -1,0 +1,174 @@
+---
+title: "Impacts of transitioning to clean household energy"
+subtitle: "Evidence from policy reform in peri-urban Beijing"
+author: "Sam Harper"
+date: 2024-11-21
+date-format: iso
+format: 
+  revealjs:
+    theme: [default, custom.scss]
+    width: 1600
+    height: 900
+    slide-number: true
+    html-math-method: mathjax
+    standalone: false
+    embed-resources: false
+include-in-header: 
+  text: |
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+title-slide-attributes:
+    data-background-image: "images/mcgill-epi-logo.png"
+    data-background-size: 30%
+    data-background-position: 50% 90%
+execute: 
+  cache: true
+bibliography: asm.bib
+csl: elsevier-harvard-without-titles.csl
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+library(here)
+library(tidyverse)
+library(pdftools)
+library(modelsummary)
+library(tinytable)
+```
+
+# Background
+
+# Why Did We Start?
+
+## Slide Title {background-image="images/sabrie-nyt-coal.png"} 
+
+## Policy Context
+
+## Household Energy and Air Pollution
+
+## Energy Interventions and CVD
+
+## Evaluating Potential Mechanisms
+
+## Overall Study Objectives
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+:::
+
+::: {.column width="75%"}
+
+### Aim 1. `r emo::ji("point_left")`
+
+Estimate the total effect of the intervention.
+
+### Aim 2. `r emo::ji("cross_mark")` 
+
+Estimate the contribution of changes in the chemical composition of $PM_{2.5}$ to the overall effect on health outcomes.
+
+### Aim 3. `r emo::ji("point_left")`
+
+Examine alternative [pathways and mechanisms]{.blue} that may contribute to the intervention’s impact.
+:::
+
+::::
+
+## BP, Temperature, and Air Pollution
+
+Some text here
+
+::: aside
+See @sternbach2022
+:::
+
+## More information
+
+Some text here
+
+::: {.aside}
+Actually, read @callaway2021a 
+:::
+
+# What Did We Do?
+
+## First part of mediation: total effect
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="25%"}
+
+<br>
+
+Step 1: Estimate the total effect of $T$.
+
+:::
+
+::: {.column width="75%"}
+
+<br><br>
+
+
+:::
+
+::::
+
+## Second part of mediation: decomposition
+
+Basic idea: understand pathways of effects 
+
+:::: {.columns}
+
+::: {.column width="25%"}
+
+<br>
+
+Step 2: Estimate how much of the total effect is due to $PM_{2.5}$ vs. other pathways?
+
+:::
+
+::: {.column width="75%"}
+
+<br>
+
+
+:::
+
+::::
+
+# What Did We Find?
+
+## Balance Table
+
+```{r, echo=F, message=F, warning=F}
+library("modelsummary")
+
+library(modelsummary)
+d <- mtcars %>%
+  rename(mpg_with_longer_name = mpg)
+t <- datasummary_balance(~am, data = d)
+colnames(t@table_dataframe) <- c("", "Mean", "SD", 
+  "Mean", "SD", "Diff", "SE")
+tt(t@table_dataframe) %>%
+  group_tt(j = list(`Enrolled` = 2:3, `Never` = 4:5))
+```
+# What Does It Mean?
+
+## {.center background-image="images/mcgill-university.jpg"}
+
+:::{#title-slide .center}
+### [Questions?]{.white} 
+[sam.harper@mcgill.ca]{.white}  
+[samharper.org]{.white}
+
+![](images/sbh4th-qr.png)
+:::
+
+## References
+
+
