@@ -21,11 +21,9 @@ title-slide-attributes:
     data-background-size: 30%
     data-background-position: 50% 90%
 execute: 
-  cache: true
+  cache: false
 bibliography: asm.bib
 csl: elsevier-harvard-without-titles.csl
-editor_options: 
-  chunk_output_type: inline
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
@@ -34,6 +32,8 @@ library(tidyverse)
 library(pdftools)
 library(modelsummary)
 library(tinytable)
+library(kableExtra)
+library(osfr)
 ```
 
 # Background
@@ -42,13 +42,31 @@ library(tinytable)
 
 ## Slide Title {background-image="images/sabrie-nyt-coal.png"} 
 
+::: aside
+Image credit: [NY Times](https://www.nytimes.com/2018/02/10/world/asia/china-coal-smog-pollution.html)
+:::
+
+## {background-image="images/coal-coverage.png" background-size="contain"} 
+
 ## Policy Context
+
+Beijing designated “coal restricted areas”
+Government subsidized electric or gas-powered heat pumps (80% of $4,500 cost) 
+2017: required 1.5 million people to halt coal use (scaled to >2 million by ambitious local officials)
+Stepped implementation from 2017-2021 in Beijing and northern China (63 million homes)
+
 
 ## Household Energy and Air Pollution
 
 ## Energy Interventions and CVD
 
 ## Evaluating Potential Mechanisms
+
+## How Might This Work?
+
+<br>
+
+![](images/bhet-results-chain.png){fig-align="center" width="80%"}
 
 ## Overall Study Objectives
 
@@ -141,22 +159,132 @@ Step 2: Estimate how much of the total effect is due to $PM_{2.5}$ vs. other pat
 
 ::::
 
+## Quantities of interest {background-image="images/basic-dag.png" background-size="30%" background-position="top 0% left 100%"}
+
+Total effect:
+$$\color{red}{E[Y|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X}$$
+
+This equation estimates the total effect of the ban:
+$$\color{red}{TE=\beta_{1}(T^{*}-T)}$$
+where $T^{*}$ is exposure to ban and $T$ is no exposure.
+
+
+## Mediation model {background-image="images/basic-dag.png" background-size="30%" background-position="top 0% left 100%"}
+
+Estimate two regressions:
+
+1. Treatment on mediator:  
+
+$${E[M|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X}$$
+
+. . . 
+
+2. Treatment and mediator on outcome:  
+
+$$\color{red}E[Y|T,X,M] = \theta_{0} + \theta_{1}T + \theta_{2}M + \theta_{3}TM + \theta_{4}X + \theta_{5}W$$
+
+
+Second equation estimates the "Controlled Direct Effect":
+$$\color{red}{CDE=\theta_{1}+\theta_{3}TM}$$
+
+::: aside
+See @vanderweele2015. Other quantities include the "Natural Direct Effect" ($\theta_{1} + \theta_{3}(\beta_{0} + \beta_{1} + \beta_{2})$) and the "Natural Indirect Effect" ($\theta_{2}\beta_{1} + \theta_{3}\beta_{1}$)]
+:::
+
+## Key assumptions {background-image="images/basic-dag.png" background-size="30%" background-position="top 0% left 100%"}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+:::
+
+::: {.column width="75%"}
+
+Assumptions for valid CDE:
+
+- No confounding of the total effect.
+- No confounding of the mediator-outcome effect.
+
+Valid NDE and NIE also require:
+
+- No confounding of the exposure-mediator effect.
+- No mediator–outcome confounder affected by treatment.
+:::
+
+::::
+
+## What the hell is the CDE?
+<br>
+
+### Interpretation
+
+*This effect is the contrast between the counterfactual outcome if the individual were exposed at $T=t$ and the counterfactual outcome if the same individual were exposed at* $T=t*$, *with the mediator set to a fixed level* $M=m$.
+
+<br>
+
+### English:
+
+*"By how much would blood pressure change if the policy were implemented and we held $PM_{2.5}$ fixed at* $m$ *?"*
+
 # What Did We Find?
 
-## Balance Table
+## Treatment groups were generally balanced
 
 ```{r, echo=F, message=F, warning=F}
-library("modelsummary")
+bt <- readRDS(here("data-clean", 
+  "t_balance.rds"))
 
-library(modelsummary)
-d <- mtcars %>%
-  rename(mpg_with_longer_name = mpg)
-t <- datasummary_balance(~am, data = d)
-colnames(t@table_dataframe) <- c("", "Mean", "SD", 
-  "Mean", "SD", "Diff", "SE")
-tt(t@table_dataframe) %>%
-  group_tt(j = list(`Enrolled` = 2:3, `Never` = 4:5))
+btf <- tt(bt@table_dataframe) %>%
+  group_tt(j = list(`Never enrolled (N=603)` = 2:3, 
+    `Ever enrolled (N=400)` = 4:5)) %>%
+  style_tt(j=1:7, fontsize = 0.7) %>%
+  theme_tt("striped")
+btf
 ```
+
+## Treatment groups were generally balanced
+
+```{r, echo=F, message=F, warning=F}
+bt <- readRDS(here("data-clean", 
+  "t_balance.rds"))
+
+knitr::kable(bt@table_dataframe) |>
+  kable_styling(bootstrap_options = c("striped", "hover", 
+    "condensed", "responsive"), full_width = F, font_size=30) %>%
+  column_spec(1, width_min = '5in') %>%
+  add_header_above(c(" " = 1, "Never treated (N=603)" = 2, 
+                     "Ever treated (N=400)" = 2, " " = 2))
+```
+
+## Treated households adopted cleaner energy
+
+![](images/sankey-w2.png){fig-align="center" width="70%"}
+
+## Treated households adopted cleaner energy
+
+[*At the time of treatment*]{.large}
+
+![](images/sanky.jpg)
+
+## Treated households reported less coal use
+<br>
+
+![](images/coal-plot.png){fig-align="center"}
+
+
+## Policy reduced (only) indoor PM
+
+## Policy reduced indoor temperature
+
+## Policy reduced BP, respiratory symptoms, not biomarkers
+
+## Most of the BP effect was mediated by PM and Temp
+
+## Little mediation for respiratory symptoms
+
 # What Does It Mean?
 
 ## {.center background-image="images/mcgill-university.jpg"}

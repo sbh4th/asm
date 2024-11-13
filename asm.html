@@ -341,6 +341,8 @@
       margin-right: 0; 
     }
   </style>
+  <script src="asm_files/libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="asm_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body class="quarto-light">
@@ -373,9 +375,16 @@ Sam Harper
 </section>
 <section id="slide-title" class="slide level2" data-background-image="images/sabrie-nyt-coal.png">
 <h2>Slide Title</h2>
+
+<aside><div>
+<p>Image credit: <a href="https://www.nytimes.com/2018/02/10/world/asia/china-coal-smog-pollution.html">NY Times</a></p>
+</div></aside></section>
+<section id="section" class="slide level2" data-background-image="images/coal-coverage.png" data-background-size="contain">
+<h2></h2>
 </section>
 <section id="policy-context" class="slide level2">
 <h2>Policy Context</h2>
+<p>Beijing designated “coal restricted areas” Government subsidized electric or gas-powered heat pumps (80% of $4,500 cost) 2017: required 1.5 million people to halt coal use (scaled to &gt;2 million by ambitious local officials) Stepped implementation from 2017-2021 in Beijing and northern China (63 million homes)</p>
 </section>
 <section id="household-energy-and-air-pollution" class="slide level2">
 <h2>Household Energy and Air Pollution</h2>
@@ -386,6 +395,11 @@ Sam Harper
 <section id="evaluating-potential-mechanisms" class="slide level2">
 <h2>Evaluating Potential Mechanisms</h2>
 </section>
+<section id="how-might-this-work" class="slide level2">
+<h2>How Might This Work?</h2>
+<p><br></p>
+
+<img data-src="images/bhet-results-chain.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
 <section id="overall-study-objectives" class="slide level2">
 <h2>Overall Study Objectives</h2>
 <p><br></p>
@@ -441,25 +455,76 @@ Sam Harper
 </div><div class="column" style="width:75%;">
 <p><br></p>
 </div></div>
+</section>
+<section id="quantities-of-interest" class="slide level2" data-background-image="images/basic-dag.png" data-background-size="30%" data-background-position="top 0% left 100%">
+<h2>Quantities of interest</h2>
+<p>Total effect: <span class="math display">\[\color{red}{E[Y|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X}\]</span></p>
+<p>This equation estimates the total effect of the ban: <span class="math display">\[\color{red}{TE=\beta_{1}(T^{*}-T)}\]</span> where <span class="math inline">\(T^{*}\)</span> is exposure to ban and <span class="math inline">\(T\)</span> is no exposure.</p>
+</section>
+<section id="mediation-model" class="slide level2" data-background-image="images/basic-dag.png" data-background-size="30%" data-background-position="top 0% left 100%">
+<h2>Mediation model</h2>
+<p>Estimate two regressions:</p>
+<ol type="1">
+<li>Treatment on mediator:</li>
+</ol>
+<p><span class="math display">\[{E[M|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X}\]</span></p>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Treatment and mediator on outcome:</li>
+</ol>
+<p><span class="math display">\[\color{red}E[Y|T,X,M] = \theta_{0} + \theta_{1}T + \theta_{2}M + \theta_{3}TM + \theta_{4}X + \theta_{5}W\]</span></p>
+<p>Second equation estimates the “Controlled Direct Effect”: <span class="math display">\[\color{red}{CDE=\theta_{1}+\theta_{3}TM}\]</span></p>
+
+</div>
+<aside><div>
+<p>See <span class="citation" data-cites="vanderweele2015">VanderWeele (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>. Other quantities include the “Natural Direct Effect” (<span class="math inline">\(\theta_{1} + \theta_{3}(\beta_{0} + \beta_{1} + \beta_{2})\)</span>) and the “Natural Indirect Effect” (<span class="math inline">\(\theta_{2}\beta_{1} + \theta_{3}\beta_{1}\)</span>)]</p>
+</div></aside></section>
+<section id="key-assumptions" class="slide level2" data-background-image="images/basic-dag.png" data-background-size="30%" data-background-position="top 0% left 100%">
+<h2>Key assumptions</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:20%;">
+
+</div><div class="column" style="width:75%;">
+<p>Assumptions for valid CDE:</p>
+<ul>
+<li>No confounding of the total effect.</li>
+<li>No confounding of the mediator-outcome effect.</li>
+</ul>
+<p>Valid NDE and NIE also require:</p>
+<ul>
+<li>No confounding of the exposure-mediator effect.</li>
+<li>No mediator–outcome confounder affected by treatment.</li>
+</ul>
+</div></div>
+</section>
+<section id="what-the-hell-is-the-cde" class="slide level2">
+<h2>What the hell is the CDE?</h2>
+<p><br></p>
+<h3 id="interpretation">Interpretation</h3>
+<p><em>This effect is the contrast between the counterfactual outcome if the individual were exposed at <span class="math inline">\(T=t\)</span> and the counterfactual outcome if the same individual were exposed at</em> <span class="math inline">\(T=t*\)</span>, <em>with the mediator set to a fixed level</em> <span class="math inline">\(M=m\)</span>.</p>
+<p><br></p>
+<h3 id="english">English:</h3>
+<p><em>“By how much would blood pressure change if the policy were implemented and we held <span class="math inline">\(PM_{2.5}\)</span> fixed at</em> <span class="math inline">\(m\)</span> <em>?“</em></p>
 </section></section>
 <section>
 <section id="what-did-we-find" class="title-slide slide level1 center">
 <h1>What Did We Find?</h1>
 
 </section>
-<section id="balance-table" class="slide level2">
-<h2>Balance Table</h2>
+<section id="treatment-groups-were-generally-balanced" class="slide level2">
+<h2>Treatment groups were generally balanced</h2>
 <div class="cell">
 <div class="cell-output-display">
 <!-- preamble start -->
 
     <script>
-      function styleCell_d22lxt1m8ohy02zperil(i, j, css_id) {
-        var table = document.getElementById("tinytable_d22lxt1m8ohy02zperil");
+      function styleCell_my778i9ceby4m20oxdzf(i, j, css_id) {
+        var table = document.getElementById("tinytable_my778i9ceby4m20oxdzf");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_d22lxt1m8ohy02zperil');
+        var table = document.getElementById('tinytable_my778i9ceby4m20oxdzf');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -467,8 +532,8 @@ Sam Harper
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_d22lxt1m8ohy02zperil(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_d22lxt1m8ohy02zperil");
+      function spanCell_my778i9ceby4m20oxdzf(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_my778i9ceby4m20oxdzf");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -494,34 +559,119 @@ Sam Harper
         targetCell.rowSpan = rowspan;
         targetCell.colSpan = colspan;
       }
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(0, 0, 'tinytable_css_id2cw0af3bculc328hn721') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(0, 1, 'tinytable_css_idafbfoqx60fklgfp3kwg2') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(0, 2, 'tinytable_css_idafbfoqx60fklgfp3kwg2') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(0, 3, 'tinytable_css_id2cw0af3bculc328hn721') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(0, 4, 'tinytable_css_id2cw0af3bculc328hn721') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(0, 5, 'tinytable_css_id2cw0af3bculc328hn721') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(0, 6, 'tinytable_css_id2cw0af3bculc328hn721') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(1, 0, 'tinytable_css_id6mazg1xqa8hzhtbwt8mh') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(1, 1, 'tinytable_css_id6mazg1xqa8hzhtbwt8mh') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(1, 2, 'tinytable_css_id6mazg1xqa8hzhtbwt8mh') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(1, 3, 'tinytable_css_id6mazg1xqa8hzhtbwt8mh') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(1, 4, 'tinytable_css_id6mazg1xqa8hzhtbwt8mh') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(1, 5, 'tinytable_css_id6mazg1xqa8hzhtbwt8mh') })
-window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(1, 6, 'tinytable_css_id6mazg1xqa8hzhtbwt8mh') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(0, 0, 'tinytable_css_id9rum7pz4qr954j7ppcov') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(0, 1, 'tinytable_css_id84779ur6urkn4lbl6910') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(0, 2, 'tinytable_css_id84779ur6urkn4lbl6910') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(0, 3, 'tinytable_css_id9rum7pz4qr954j7ppcov') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(0, 4, 'tinytable_css_id9rum7pz4qr954j7ppcov') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(0, 5, 'tinytable_css_id9rum7pz4qr954j7ppcov') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(0, 6, 'tinytable_css_id9rum7pz4qr954j7ppcov') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(1, 0, 'tinytable_css_idr2olljm4kz1caca0y7sj') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(1, 1, 'tinytable_css_idr2olljm4kz1caca0y7sj') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(1, 2, 'tinytable_css_idr2olljm4kz1caca0y7sj') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(1, 3, 'tinytable_css_idr2olljm4kz1caca0y7sj') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(1, 4, 'tinytable_css_idr2olljm4kz1caca0y7sj') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(1, 5, 'tinytable_css_idr2olljm4kz1caca0y7sj') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(1, 6, 'tinytable_css_idr2olljm4kz1caca0y7sj') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(2, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(2, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(2, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(2, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(2, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(2, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(2, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(3, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(3, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(3, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(3, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(3, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(3, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(3, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(4, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(4, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(4, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(4, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(4, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(4, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(4, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(5, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(5, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(5, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(5, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(5, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(5, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(5, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(6, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(6, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(6, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(6, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(6, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(6, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(6, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(7, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(7, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(7, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(7, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(7, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(7, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(7, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(8, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(8, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(8, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(8, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(8, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(8, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(8, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(9, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(9, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(9, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(9, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(9, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(9, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(9, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(10, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(10, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(10, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(10, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(10, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(10, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(10, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(11, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(11, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(11, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(11, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(11, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(11, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(11, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(12, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(12, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(12, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(12, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(12, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(12, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(12, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(13, 0, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(13, 1, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(13, 2, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(13, 3, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(13, 4, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(13, 5, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
+window.addEventListener('load', function () { styleCell_my778i9ceby4m20oxdzf(13, 6, 'tinytable_css_idfss1tm8iaf4cd5sgfmqm') })
     </script>
 
     <style>
-    .table td.tinytable_css_id2cw0af3bculc328hn721, .table th.tinytable_css_id2cw0af3bculc328hn721 {  text-align: center; }
-    .table td.tinytable_css_idafbfoqx60fklgfp3kwg2, .table th.tinytable_css_idafbfoqx60fklgfp3kwg2 {  border-bottom: solid 0.05em #d3d8dc;  text-align: center; }
-    .table td.tinytable_css_id6mazg1xqa8hzhtbwt8mh, .table th.tinytable_css_id6mazg1xqa8hzhtbwt8mh {  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_id9rum7pz4qr954j7ppcov, .table th.tinytable_css_id9rum7pz4qr954j7ppcov {  font-size: 0.7em;  text-align: center; }
+    .table td.tinytable_css_id84779ur6urkn4lbl6910, .table th.tinytable_css_id84779ur6urkn4lbl6910 {  font-size: 0.7em;  border-bottom: solid 0.05em #d3d8dc;  text-align: center; }
+    .table td.tinytable_css_idr2olljm4kz1caca0y7sj, .table th.tinytable_css_idr2olljm4kz1caca0y7sj {  font-size: 0.7em;  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_idfss1tm8iaf4cd5sgfmqm, .table th.tinytable_css_idfss1tm8iaf4cd5sgfmqm {  font-size: 0.7em; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_d22lxt1m8ohy02zperil" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_my778i9ceby4m20oxdzf" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
 <tr>
 <th scope="col" align="center" colspan="1"> </th>
-<th scope="col" align="center" colspan="2">Enrolled</th>
-<th scope="col" align="center" colspan="2">Never</th>
+<th scope="col" align="center" colspan="2">Never enrolled (N=603)</th>
+<th scope="col" align="center" colspan="2">Ever enrolled (N=400)</th>
 <th scope="col" align="center" colspan="1"> </th>
 <th scope="col" align="center" colspan="1"> </th>
 </tr>
@@ -539,94 +689,112 @@ window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(1, 
         
         <tbody>
                 <tr>
-                  <td>mpg_with_longer_name</td>
-                  <td>17.1 </td>
-                  <td>3.8  </td>
-                  <td>24.4 </td>
-                  <td>6.2 </td>
-                  <td>7.2   </td>
-                  <td>1.9 </td>
-                </tr>
-                <tr>
-                  <td>cyl                 </td>
-                  <td>6.9  </td>
-                  <td>1.5  </td>
-                  <td>5.1  </td>
-                  <td>1.6 </td>
-                  <td>-1.9  </td>
+                  <td>Age (years)                </td>
+                  <td>59.9 </td>
+                  <td>9.4  </td>
+                  <td>60.4 </td>
+                  <td>9.2  </td>
+                  <td>0.5  </td>
                   <td>0.6 </td>
                 </tr>
                 <tr>
-                  <td>disp                </td>
-                  <td>290.4</td>
-                  <td>110.2</td>
-                  <td>143.5</td>
-                  <td>87.2</td>
-                  <td>-146.8</td>
-                  <td>35.0</td>
+                  <td>Female (%)                 </td>
+                  <td>59.5 </td>
+                  <td>49.1 </td>
+                  <td>60.0 </td>
+                  <td>49.1 </td>
+                  <td>0.5  </td>
+                  <td>3.2 </td>
                 </tr>
                 <tr>
-                  <td>hp                  </td>
-                  <td>160.3</td>
-                  <td>53.9 </td>
-                  <td>126.8</td>
-                  <td>84.1</td>
-                  <td>-33.4 </td>
-                  <td>26.4</td>
+                  <td>Secondary+ education (%)   </td>
+                  <td>12.6 </td>
+                  <td>33.2 </td>
+                  <td>9.8  </td>
+                  <td>29.7 </td>
+                  <td>-2.9 </td>
+                  <td>2.0 </td>
                 </tr>
                 <tr>
-                  <td>drat                </td>
+                  <td>Wealth index (bottom 25%)  </td>
+                  <td>26.9 </td>
+                  <td>44.4 </td>
+                  <td>22.3 </td>
+                  <td>41.7 </td>
+                  <td>-4.6 </td>
+                  <td>2.8 </td>
+                </tr>
+                <tr>
+                  <td>Current smoker (%)         </td>
+                  <td>26.2 </td>
+                  <td>44.0 </td>
+                  <td>25.4 </td>
+                  <td>43.6 </td>
+                  <td>-0.8 </td>
+                  <td>2.8 </td>
+                </tr>
+                <tr>
+                  <td>Daily drinker (%)          </td>
+                  <td>17.8 </td>
+                  <td>38.3 </td>
+                  <td>21.9 </td>
+                  <td>41.4 </td>
+                  <td>4.1  </td>
+                  <td>2.6 </td>
+                </tr>
+                <tr>
+                  <td>Systolic (mmHg)            </td>
+                  <td>131.4</td>
+                  <td>16.8 </td>
+                  <td>128.7</td>
+                  <td>14.3 </td>
+                  <td>-2.7 </td>
+                  <td>1.0 </td>
+                </tr>
+                <tr>
+                  <td>Diastolic (mmHg)           </td>
+                  <td>82.7 </td>
+                  <td>11.6 </td>
+                  <td>82.1 </td>
+                  <td>11.3 </td>
+                  <td>-0.6 </td>
+                  <td>0.8 </td>
+                </tr>
+                <tr>
+                  <td>Body mass index (kg/m2)    </td>
+                  <td>26.3 </td>
+                  <td>3.7  </td>
+                  <td>25.8 </td>
+                  <td>3.6  </td>
+                  <td>-0.5 </td>
+                  <td>0.3 </td>
+                </tr>
+                <tr>
+                  <td>Any respiratory problem (%)</td>
+                  <td>50.6 </td>
+                  <td>50.0 </td>
+                  <td>54.3 </td>
+                  <td>49.9 </td>
+                  <td>3.7  </td>
+                  <td>3.2 </td>
+                </tr>
+                <tr>
+                  <td>Temperature (°C)           </td>
+                  <td>13.8 </td>
+                  <td>3.6  </td>
+                  <td>13.5 </td>
                   <td>3.3  </td>
-                  <td>0.4  </td>
-                  <td>4.0  </td>
-                  <td>0.4 </td>
-                  <td>0.8   </td>
-                  <td>0.1 </td>
-                </tr>
-                <tr>
-                  <td>wt                  </td>
-                  <td>3.8  </td>
-                  <td>0.8  </td>
-                  <td>2.4  </td>
-                  <td>0.6 </td>
-                  <td>-1.4  </td>
+                  <td>-0.3 </td>
                   <td>0.2 </td>
                 </tr>
                 <tr>
-                  <td>qsec                </td>
-                  <td>18.2 </td>
-                  <td>1.8  </td>
-                  <td>17.4 </td>
-                  <td>1.8 </td>
-                  <td>-0.8  </td>
-                  <td>0.6 </td>
-                </tr>
-                <tr>
-                  <td>vs                  </td>
-                  <td>0.4  </td>
-                  <td>0.5  </td>
-                  <td>0.5  </td>
-                  <td>0.5 </td>
-                  <td>0.2   </td>
-                  <td>0.2 </td>
-                </tr>
-                <tr>
-                  <td>gear                </td>
-                  <td>3.2  </td>
-                  <td>0.4  </td>
-                  <td>4.4  </td>
-                  <td>0.5 </td>
-                  <td>1.2   </td>
-                  <td>0.2 </td>
-                </tr>
-                <tr>
-                  <td>carb                </td>
-                  <td>2.7  </td>
-                  <td>1.1  </td>
-                  <td>2.9  </td>
-                  <td>2.2 </td>
-                  <td>0.2   </td>
-                  <td>0.7 </td>
+                  <td>Personal PM2.5 (ug/m3)     </td>
+                  <td>127.1</td>
+                  <td>145.3</td>
+                  <td>102.3</td>
+                  <td>105.5</td>
+                  <td>-24.7</td>
+                  <td>11.9</td>
                 </tr>
         </tbody>
       </table>
@@ -634,13 +802,195 @@ window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(1, 
 <!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
+</section>
+<section id="treatment-groups-were-generally-balanced-1" class="slide level2">
+<h2>Treatment groups were generally balanced</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="table-responsive">
+<table class="table table-striped table-hover table-condensed caption-top" data-quarto-postprocess="true" style="font-size: 30px; width: auto !important; margin-left: auto; margin-right: auto;">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; empty-cells: hide; border-bottom: hidden;"></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Never treated (N=603)
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Ever treated (N=400)
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: left; empty-cells: hide; border-bottom: hidden;"></th>
+</tr>
+<tr class="odd">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">SD</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">SD</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Diff</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">SE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Age (years)</td>
+<td style="text-align: left;">59.9</td>
+<td style="text-align: left;">9.4</td>
+<td style="text-align: left;">60.4</td>
+<td style="text-align: left;">9.2</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">0.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Female (%)</td>
+<td style="text-align: left;">59.5</td>
+<td style="text-align: left;">49.1</td>
+<td style="text-align: left;">60.0</td>
+<td style="text-align: left;">49.1</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">3.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Secondary+ education (%)</td>
+<td style="text-align: left;">12.6</td>
+<td style="text-align: left;">33.2</td>
+<td style="text-align: left;">9.8</td>
+<td style="text-align: left;">29.7</td>
+<td style="text-align: left;">-2.9</td>
+<td style="text-align: left;">2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Wealth index (bottom 25%)</td>
+<td style="text-align: left;">26.9</td>
+<td style="text-align: left;">44.4</td>
+<td style="text-align: left;">22.3</td>
+<td style="text-align: left;">41.7</td>
+<td style="text-align: left;">-4.6</td>
+<td style="text-align: left;">2.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Current smoker (%)</td>
+<td style="text-align: left;">26.2</td>
+<td style="text-align: left;">44.0</td>
+<td style="text-align: left;">25.4</td>
+<td style="text-align: left;">43.6</td>
+<td style="text-align: left;">-0.8</td>
+<td style="text-align: left;">2.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Daily drinker (%)</td>
+<td style="text-align: left;">17.8</td>
+<td style="text-align: left;">38.3</td>
+<td style="text-align: left;">21.9</td>
+<td style="text-align: left;">41.4</td>
+<td style="text-align: left;">4.1</td>
+<td style="text-align: left;">2.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Systolic (mmHg)</td>
+<td style="text-align: left;">131.4</td>
+<td style="text-align: left;">16.8</td>
+<td style="text-align: left;">128.7</td>
+<td style="text-align: left;">14.3</td>
+<td style="text-align: left;">-2.7</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Diastolic (mmHg)</td>
+<td style="text-align: left;">82.7</td>
+<td style="text-align: left;">11.6</td>
+<td style="text-align: left;">82.1</td>
+<td style="text-align: left;">11.3</td>
+<td style="text-align: left;">-0.6</td>
+<td style="text-align: left;">0.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Body mass index (kg/m2)</td>
+<td style="text-align: left;">26.3</td>
+<td style="text-align: left;">3.7</td>
+<td style="text-align: left;">25.8</td>
+<td style="text-align: left;">3.6</td>
+<td style="text-align: left;">-0.5</td>
+<td style="text-align: left;">0.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Any respiratory problem (%)</td>
+<td style="text-align: left;">50.6</td>
+<td style="text-align: left;">50.0</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">49.9</td>
+<td style="text-align: left;">3.7</td>
+<td style="text-align: left;">3.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Temperature (°C)</td>
+<td style="text-align: left;">13.8</td>
+<td style="text-align: left;">3.6</td>
+<td style="text-align: left;">13.5</td>
+<td style="text-align: left;">3.3</td>
+<td style="text-align: left;">-0.3</td>
+<td style="text-align: left;">0.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Personal PM2.5 (ug/m3)</td>
+<td style="text-align: left;">127.1</td>
+<td style="text-align: left;">145.3</td>
+<td style="text-align: left;">102.3</td>
+<td style="text-align: left;">105.5</td>
+<td style="text-align: left;">-24.7</td>
+<td style="text-align: left;">11.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+</div>
+</section>
+<section id="treated-households-adopted-cleaner-energy" class="slide level2">
+<h2>Treated households adopted cleaner energy</h2>
+
+<img data-src="images/sankey-w2.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
+<section id="treated-households-adopted-cleaner-energy-1" class="slide level2">
+<h2>Treated households adopted cleaner energy</h2>
+<p><span class="large"><em>At the time of treatment</em></span></p>
+
+<img data-src="images/sanky.jpg" class="r-stretch"></section>
+<section id="treated-households-reported-less-coal-use" class="slide level2">
+<h2>Treated households reported less coal use</h2>
+<p><br></p>
+
+<img data-src="images/coal-plot.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="policy-reduced-only-indoor-pm" class="slide level2">
+<h2>Policy reduced (only) indoor PM</h2>
+</section>
+<section id="policy-reduced-indoor-temperature" class="slide level2">
+<h2>Policy reduced indoor temperature</h2>
+</section>
+<section id="policy-reduced-bp-respiratory-symptoms-not-biomarkers" class="slide level2">
+<h2>Policy reduced BP, respiratory symptoms, not biomarkers</h2>
+</section>
+<section id="most-of-the-bp-effect-was-mediated-by-pm-and-temp" class="slide level2">
+<h2>Most of the BP effect was mediated by PM and Temp</h2>
+</section>
+<section id="little-mediation-for-respiratory-symptoms" class="slide level2">
+<h2>Little mediation for respiratory symptoms</h2>
 </section></section>
 <section>
 <section id="what-does-it-mean" class="title-slide slide level1 center">
 <h1>What Does It Mean?</h1>
 
 </section>
-<section id="section" class="slide level2 center" data-background-image="images/mcgill-university.jpg">
+<section id="section-1" class="slide level2 center" data-background-image="images/mcgill-university.jpg">
 <h2></h2>
 <div id="title-slide" class="center">
 <h3 id="questions"><span class="white">Questions?</span></h3>
@@ -662,6 +1012,9 @@ window.addEventListener('load', function () { styleCell_d22lxt1m8ohy02zperil(1, 
 </div>
 <div id="ref-sternbach2022" class="csl-entry" role="listitem">
 <a href="https://doi.org/10.1097/HJH.0000000000003198">Sternbach, T.J., Harper, S., Li, X., Zhang, X., Carter, E., Zhang, Y., Shen, G., Fan, Z., Zhao, L., Tao, S., Baumgartner, J., 2022. J Hypertension 40, 1950–1959.</a>
+</div>
+<div id="ref-vanderweele2015" class="csl-entry" role="listitem">
+VanderWeele, T.J., 2015. Explanation in causal inference: Methods for mediation and interaction. Oxford University Press, New York.
 </div>
 </div>
 </section></section>
