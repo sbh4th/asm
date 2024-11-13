@@ -50,6 +50,19 @@ Image credit: [NY Times](https://www.nytimes.com/2018/02/10/world/asia/china-coa
 
 ## Policy Context
 
+## Study location
+
+::: columns
+::: {.column width="30%"}
+:::
+
+::: {.column width="70%"}
+![](images/village-map.png){fig-align="center" width="80%"}
+:::
+:::
+
+## 
+
 Beijing designated “coal restricted areas”
 Government subsidized electric or gas-powered heat pumps (80% of $4,500 cost) 
 2017: required 1.5 million people to halt coal use (scaled to >2 million by ambitious local officials)
@@ -228,6 +241,15 @@ Valid NDE and NIE also require:
 ### English:
 
 *"By how much would blood pressure change if the policy were implemented and we held $PM_{2.5}$ fixed at* $m$ *?"*
+
+## Total Effect
+
+$$logit(Y_{it}) = \alpha^{village}_{v[i]} + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t})$$ 
+
+- $\alpha^{village}_{v[i]}$ = village-level random intercept
+- $d_{r}$ = treatment cohort fixed effects  
+- $fs_{t}$ = time fixed effects  
+- $\tau_{rt}$ = cohort-time *ATTs*
 
 # What Did We Find?
 
