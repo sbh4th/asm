@@ -13,6 +13,7 @@ format:
     html-math-method: mathjax
     standalone: false
     embed-resources: false
+    auto-stretch: false
 include-in-header: 
   text: |
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -29,14 +30,36 @@ csl: elsevier-harvard-without-titles.csl
 ```{r setup, include=FALSE, echo=FALSE}
 library(here)
 library(tidyverse)
+library(readxl)
 library(pdftools)
 library(modelsummary)
 library(tinytable)
 library(kableExtra)
 library(osfr)
+library(patchwork)
+
+# set theme for plots
+theme_asm <- function() {
+  theme_classic() + 
+    theme(axis.title = element_text(size=18),
+      axis.text = element_text(size = 18),
+      strip.background = element_blank(),
+      strip.text = element_text(size = 16),
+      axis.text.x = element_text(color="gray50"),
+      axis.title.x = element_text(color="gray50"),
+      axis.line.x = element_line(color="gray50"),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank())
+}
 ```
 
 # Background
+
+## {.center}
+
+:::{#title-slide .center}
+[**Impacts of Clean Energy Transition Policy**]{.large}
+:::
 
 # Why Did We Start?
 
@@ -49,6 +72,17 @@ Image credit: [NY Times](https://www.nytimes.com/2018/02/10/world/asia/china-coa
 ## {background-image="images/coal-coverage.png" background-size="contain"} 
 
 ## Policy Context
+
+## Research Gaps {background-image="images/lai-2024-title.png" background-size="40%" background-position="top 20% left 90%"}
+
+- Something here
+
+- Something more here
+
+- Something quite a bit longer and with more text here.
+
+> Household energy solutions need to go beyond cooking interventions alone; there are multiple sources that contribute to HAP
+
 
 ## Study location
 
@@ -126,6 +160,12 @@ Actually, read @callaway2021a
 
 # What Did We Do?
 
+## Data Collection Overview
+
+![](images/data-collection-flow.png){fig-align="center" width="80%"}
+
+## Questionnaires
+
 ## First part of mediation: total effect
 
 <br>
@@ -165,7 +205,7 @@ Step 2: Estimate how much of the total effect is due to $PM_{2.5}$ vs. other pat
 
 ::: {.column width="75%"}
 
-<br>
+![](images/cde-dag.png){fig-align="center" width="100%"}
 
 
 :::
@@ -299,11 +339,94 @@ knitr::kable(bt@table_dataframe) |>
 
 ## Policy reduced (only) indoor PM
 
-## Policy reduced indoor temperature
+## 
 
-## Policy reduced BP, respiratory symptoms, not biomarkers
+:::{#title-slide .center}
+[**Did the policy affect the mediators?**]{.large}
+:::
+<br>
 
-## Most of the BP effect was mediated by PM and Temp
+![](images/dag-t-on-m.png){fig-align="center" width="70%"}
+
+## Policy reduced indoor temperature {background-image="images/dag-t-on-m.png" background-size="15%" background-position="top 1% left 98%"}
+```{r, echo=F, message=F, warning=F, out.width="90%"}
+stemp_table <- read_xlsx(here("data-clean",
+  "marginal_temp_results.xlsx")) %>%
+  mutate(
+    # Extract mean
+    estimate = as.double(str_extract(att, "^[^\\(]+")),                 # Extract lower bound
+    ci_lower = as.double(str_extract(att, "(?<=\\().+?(?=,)")),         # Extract upper bound
+    ci_upper = as.double(str_extract(att, "(?<=, ).+?(?=\\))")),
+    # rename model for reshape
+    model = case_when(
+      `Covariate adjustment` == "DiD" ~ 1,
+      `Covariate adjustment` != "DiD" ~ 2,),
+    n = rep(c(2:7, 1), each=2),
+    label = fct_reorder(`Outcome metric`, desc(n))) %>%
+  filter(model == 2)
+
+ggplot(stemp_table, 
+  aes(x = estimate, y = label)) + 
+  geom_point() + 
+  geom_errorbar(aes(xmin = ci_lower, 
+    xmax = ci_upper), width=0.2) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  labs(y = " ", x = "Total Effect (°C)") +
+  scale_x_continuous(limits = c(-1, 6.1)) +
+  theme_asm()
+```
+
+## 
+
+:::{#title-slide .center}
+[**Did the policy affect outcomes?**]{.large}
+:::
+
+<br>
+
+![](images/dag-te-shown.png){fig-align="center" width="70%"}
+
+## Policy reduced BP, respiratory symptoms, not biomarkers {background-image="images/dag-te-shown.png" background-size="15%" background-position="top 1% left 98%"}
+
+## BP mediated by PM and Temp {background-image="images/dag-cde-shown.png" background-size="15%" background-position="top 1% left 98%"}
+```{r, echo=F, message=F, warning=F, out.width="90%"}
+cdes <- read_rds(here("data-clean", "cde-bp.rds"))
+  
+p_te <- ggplot(subset(cdes, m == "Adjusted Total Effect"), 
+  aes(x = theta_bar, y = label)) + 
+  geom_point() + 
+  geom_errorbar(aes(xmin = lower_95CI, 
+    xmax = upper_95CI), width=0.2) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  facet_wrap(vars(bp)) + labs(y = " ", x = "Total Effect (mmHg)") +
+  scale_x_continuous(limits = c(-3.5, 2.6)) +
+  theme_asm()
+
+p_cde <- ggplot(subset(cdes, m != "Adjusted Total Effect"), 
+  aes(x = theta_bar, y = label)) + 
+  geom_point() + 
+  geom_errorbar(aes(xmin = lower_95CI, 
+    xmax = upper_95CI), width=0.2) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  facet_wrap(vars(bp)) + labs(y = " ") +
+  theme(plot.title = element_text(hjust =-0.6)) +
+  scale_x_continuous(limits = c(-3.5, 2.6)) +
+  xlab("Controlled Direct Effect (mmHg)") + 
+  theme_asm()
+
+p_te / p_cde + plot_layout(heights = c(1, 2))
+```
+::: aside
+ETWFE model with exposure-mediator interaction, adjusted for time-varying covariates.
+:::
+
+## BP effect largely mediated by PM and Temp
+
+![](images/cde-plot.png){width="90%"}
+
+::: aside
+ETWFE model with exposure-mediator interaction, adjusted for time-varying covariates.
+:::
 
 ## Little mediation for respiratory symptoms
 

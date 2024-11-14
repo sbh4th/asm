@@ -7,6 +7,7 @@
 
 # load libraries
 library(here)
+library(readxl)
 library(tidyverse)
 library(modelsummary)
 library(tinytable)
@@ -146,3 +147,59 @@ t1f
 #    `Temperature (°C)`,
 #    `Personal PM2.5 (ug/m3)`,
 #    `Black carbon (ug/m3)`)
+
+    
+otm <- read_xlsx(here("data-clean",
+  "adjusted_overall_results.xlsx")) %>%
+  filter(str_detect(bp, "PP", 
+                    negate = TRUE)) %>%
+  filter(str_detect(bp, "amplification", 
+                    negate = TRUE)) %>%
+  filter(str_detect(bp, "Brachial",
+                    negate = FALSE)) %>%
+  mutate(m = c("Adjusted Total Effect", 
+    "Adjusted Total Effect", "Indoor PM",
+    "Indoor PM", "Indoor Temperature",
+    "Indoor Temperature", "Indoor PM & Temp",
+    "Indoor PM & Temp"),
+    o = rep(c("Systolic", "Diastolic"), times = 4))
+  
+p_te <- ggplot(subset(otm, m == "Adjusted Total Effect"), 
+  aes(x = theta_bar, y = m)) + 
+  geom_point() + 
+  geom_errorbar(aes(xmin = lower_95CI, 
+    xmax = upper_95CI), width=0.2) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  facet_wrap(vars(bp)) + labs(y = " ", x = "TE (mmHg)") +
+  scale_x_continuous(limits = c(-3.5, 2.6))
+
+p_cde <- ggplot(subset(otm, m != "Adjusted Total Effect"), 
+  aes(x = theta_bar, y = m)) + 
+  geom_point() + 
+  geom_errorbar(aes(xmin = lower_95CI, 
+    xmax = upper_95CI), width=0.2) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  facet_wrap(vars(bp)) + labs(y = " ") +
+  ggtitle("CDE Mediated by:") +
+  theme(plot.title = element_text(hjust =-0.6)) +
+  scale_x_continuous(limits = c(-3.5, 2.6)) +
+  xlab("CDE (mmHg)")
+
+p_te / p_cde + plot_layout(heights = c(1, 2))
+
+ggplot(otm, 
+  aes(x = theta_bar, y = m)) + 
+  geom_point() + 
+  geom_errorbar(aes(xmin = lower_95CI, 
+    xmax = upper_95CI), width=0.2) + 
+  facet_wrap(vars(bp))
+  
+%>%
+  mutate(ci = paste("(", sprintf('%.1f', 
+    lower_95CI), ", ", sprintf('%.1f', 
+    upper_95CI), ")", sep="")) %>%
+  rename(est = theta_bar) %>%
+  select(model, bp, est, ci) %>%
+  pivot_wider(names_from = model, 
+    values_from = c(est, ci), 
+    names_vary = "slowest")
