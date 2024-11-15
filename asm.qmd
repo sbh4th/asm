@@ -49,16 +49,64 @@ theme_asm <- function() {
       axis.title.x = element_text(color="gray50"),
       axis.line.x = element_line(color="gray50"),
       axis.line.y = element_blank(),
-      axis.ticks.y = element_blank())
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(size = 18))
 }
 ```
 
 # Background
 
-## {.center}
+## {.center background-image="images/sabrie-nyt-coal.png"} 
 
 :::{#title-slide .center}
-[**Impacts of Clean Energy Transition Policy**]{.large}
+[**Impacts of Clean Energy Transition Policy**]{.white .large}
+:::
+
+## Interdisciplinary Team {.smaller}
+
+::: columns
+::: {.column width="50%"}
+
+**McGill University** 
+
+- Jill Baumgartner (Epidemiology)
+- Sam Harper (Epidemiology)
+- Brian Robinson (Geography) 
+- Chris Barrington-Leigh (Environment)
+- Talia Sternbach (PhD Epidemiology)
+- Xiang Zhang (PhD Geography) 
+
+**Colorado State University**
+
+- Ellison Carter (Engineering)
+- Xiaoying Li (postdoc – based at McGill)
+
+**Chinese Academy of Sciences **  
+
+- Yuanxun Zhang (Air Chemistry)
+- Jing Shang (postdoc)
+
+:::
+
+::: {.column width="50%"}
+**Peking University**
+
+- Shu Tao (Environmental Science)
+- Yaojie Li (project coordinator)
+
+**China National Center for Cardiovascular Disease**     
+
+- Liancheng Zhao (CVD epidemiology)
+
+**Knowledge Users** 
+
+- Barry Jessiman (Health Canada)
+- Alison Dickson (Environ & Climate Change Canada) 
+- Iris Jin, Asia Pacific Foundation of Canada 
+- Richard Fuller, Pure Earth Foundation
+- Many government agencies, UN Foundation, WHO
+
+:::
 :::
 
 # Why Did We Start?
@@ -71,15 +119,65 @@ Image credit: [NY Times](https://www.nytimes.com/2018/02/10/world/asia/china-coa
 
 ## {background-image="images/coal-coverage.png" background-size="contain"} 
 
+## Residential coal burning in China
+
+::: columns
+::: {.column width="50%"}
+
+- Coal contains fluorine, arsenic, lead, selenium and mercury, which are not destroyed by combustion; 
+- Technical constraints make it difficult to burn coal cleanly in households; 
+
+![](images/coalstove-1.jpg){.absolute top=450 left=100 width="200" height="300"}
+![](images/coalstove-2.jpg){.absolute top=450 left=400 width="200" height="300"}
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+![](images/liu-2016-fig1.png){fig-align="center" width="100%"}
+
+- Residential coal burning makes a substantial contribution to emissions
+- Particularly in winter months
+
+:::
+:::
+
+::: aside
+@liu2016
+:::
+
 ## Policy Context
+
+::: columns
+::: {.column width="50%"}
+
+- Beijing designated “coal restricted areas”
+
+- Government subsidized electric or gas-powered heat pumps (80% of $4,500 cost) 
+
+- 2017: required 1.5 million people to halt coal use (scaled to >2 million by ambitious local officials)
+
+- Stepped implementation from 2017-2021 in Beijing and northern China (63 million homes)
+:::
+
+::: {.column width="50%"}
+![](images/beijing-policy.png){fig-align="center" width="70%"}
+:::
+:::
 
 ## Research Gaps {background-image="images/lai-2024-title.png" background-size="40%" background-position="top 20% left 90%"}
 
-- Something here
+- Prior work on cookstoves
 
-- Something more here
+- Several RCTs
 
-- Something quite a bit longer and with more text here.
+- Mixed evidence on HAP
+
+- Challenges with uptake
+
+- Weaker and mixed evidence on health impacts, even when HAP reduced.
 
 > Household energy solutions need to go beyond cooking interventions alone; there are multiple sources that contribute to HAP
 
@@ -88,6 +186,14 @@ Image credit: [NY Times](https://www.nytimes.com/2018/02/10/world/asia/china-coa
 
 ::: columns
 ::: {.column width="30%"}
+
+- Beijing designated “coal restricted areas”
+
+- Government subsidized electric or gas-powered heat pumps (80% of $4,500 cost) 
+
+- 2017: required 1.5 million people to halt coal use (scaled to >2 million by ambitious local officials)
+
+- Stepped implementation from 2017-2021 in Beijing and northern China (63 million homes)
 :::
 
 ::: {.column width="70%"}
@@ -96,11 +202,6 @@ Image credit: [NY Times](https://www.nytimes.com/2018/02/10/world/asia/china-coa
 :::
 
 ## 
-
-Beijing designated “coal restricted areas”
-Government subsidized electric or gas-powered heat pumps (80% of $4,500 cost) 
-2017: required 1.5 million people to halt coal use (scaled to >2 million by ambitious local officials)
-Stepped implementation from 2017-2021 in Beijing and northern China (63 million homes)
 
 
 ## Household Energy and Air Pollution
@@ -166,6 +267,65 @@ Actually, read @callaway2021a
 
 ## Questionnaires
 
+## Blood pressure measurement
+::: columns
+::: {.column width="60%"}
+
+- Automated oscillometric device. 
+- Calibrated by manufacturer before Years 1 and 4.
+
+<br>
+
+- Home BP measurement by trained staff.
+- Measured blood pressure 3 to 5 times on participants supported right arm, after 5 mins of quiet, seated rest.
+- Mean of final 2 measurements used in analysis.
+
+:::
+::: {.column width="40%"}
+
+![](images/bp-monitor.jpg){fig-align="center" width="40%"}
+
+![](images/bp-measurement.png){fig-align="center" width="40%"}
+:::
+:::
+
+## Indoor temperature {background-image="images/indoor-temp.png" background-size="70%" background-position="top 85% left 95%"}
+
+- Measured indoor temperature in the 5-min before BP.
+- Long-term measurement in a subsample of households with sensor taped to household wall.
+- Thermochron iButton or LabJack Digit-THL sensors.
+- Interior wall of most commonly used room.
+- 1.5m height (~ participant height).
+- Measured 5-12 months
+- 125-min sampling interval.
+
+
+## Basic idea for mediation study
+
+<br>
+
+To understand the pathways, mechanisms, and intermediates through which a treatment affects an outcome.
+
+<br>
+
+. . . 
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+:::
+
+::: {.column width="75%"}
+
+### How much of the policy effect is through:
+- Reduced exposure to $PM_{2.5}$
+- Other pathways (indoor temperature, behavioral changes)
+- Consider multiple mediators
+:::
+
+::::
+
 ## First part of mediation: total effect
 
 <br>
@@ -184,6 +344,7 @@ Step 1: Estimate the total effect of $T$.
 
 <br><br>
 
+![](images/dag-te.png){fig-align="center" width="100%"}
 
 :::
 
@@ -212,59 +373,84 @@ Step 2: Estimate how much of the total effect is due to $PM_{2.5}$ vs. other pat
 
 ::::
 
-## Quantities of interest {background-image="images/basic-dag.png" background-size="30%" background-position="top 0% left 100%"}
+## Basic Design: Difference-in-Differences
+
+<br>
+
+::: columns
+::: {.column width="30%"}
+
+Need a *counterfactual* for treated group.
+
+<br>
+
+Challenges:
+
+- Group differences
+
+- Time trends
+
+- Time-varying confounders
+:::
+
+::: {.column width="70%"}
+
+![](images/didfig.png){fig-align="center" width="80%"}
+:::
+:::
+
+## Quantities of interest {background-image="images/dag-te-shown.png" background-size="30%" background-position="top 1% left 98%"}
+
+<br>
 
 Total effect:
-$$\color{red}{E[Y|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X}$$
+$${E[Y|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X}$$
 
 This equation estimates the total effect of the ban:
-$$\color{red}{TE=\beta_{1}(T^{*}-T)}$$
+$$\color{blue}{TE=\beta_{1}(T^{*}-T)}$$
 where $T^{*}$ is exposure to ban and $T$ is no exposure.
 
 
-## Mediation model {background-image="images/basic-dag.png" background-size="30%" background-position="top 0% left 100%"}
+## Mediation model {background-image="images/dag-cde-shown.png" background-size="30%" background-position="top 1% left 98%"}
 
 Estimate two regressions:
 
 1. Treatment on mediator:  
 
-$${E[M|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X}$$
+$$\color{red}{E[M|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X}$$
 
 . . . 
 
 2. Treatment and mediator on outcome:  
 
-$$\color{red}E[Y|T,X,M] = \theta_{0} + \theta_{1}T + \theta_{2}M + \theta_{3}TM + \theta_{4}X + \theta_{5}W$$
+$$E[Y|T,X,M] = \theta_{0} + \theta_{1}T + \theta_{2}M + \theta_{3}TM + \theta_{4}X + \theta_{5}W$$
 
 
 Second equation estimates the "Controlled Direct Effect":
-$$\color{red}{CDE=\theta_{1}+\theta_{3}TM}$$
+$$\color{violet}{CDE=\theta_{1}+\theta_{3}TM}$$
 
 ::: aside
 See @vanderweele2015. Other quantities include the "Natural Direct Effect" ($\theta_{1} + \theta_{3}(\beta_{0} + \beta_{1} + \beta_{2})$) and the "Natural Indirect Effect" ($\theta_{2}\beta_{1} + \theta_{3}\beta_{1}$)]
 :::
 
-## Key assumptions {background-image="images/basic-dag.png" background-size="30%" background-position="top 0% left 100%"}
-
-<br>
+## Key assumptions {background-image="images/dag-assumptions.png" background-size="50%" background-position="top 20% left 90%"}
 
 :::: {.columns}
 
-::: {.column width="20%"}
+::: {.column width="40%"}
 
-:::
-
-::: {.column width="75%"}
+<br>
+<br>
 
 Assumptions for valid CDE:
 
 - No confounding of the total effect.
 - No confounding of the mediator-outcome effect.
 
-Valid NDE and NIE also require:
+:::
 
-- No confounding of the exposure-mediator effect.
-- No mediator–outcome confounder affected by treatment.
+::: {.column width="60%"}
+
 :::
 
 ::::
@@ -284,12 +470,18 @@ Valid NDE and NIE also require:
 
 ## Total Effect
 
-$$logit(Y_{it}) = \alpha^{village}_{v[i]} + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t})$$ 
+Extended Two-Way Fixed Effects (ETWFE) model:
+$$Y_{ijt}= \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs} (d_{r} \times fs_{t}) + \varepsilon_{ijt}$$
 
-- $\alpha^{village}_{v[i]}$ = village-level random intercept
 - $d_{r}$ = treatment cohort fixed effects  
 - $fs_{t}$ = time fixed effects  
 - $\tau_{rt}$ = cohort-time *ATTs*
+
+Marginal effects to average $\tau_{rt}$ over time and cohorts.
+
+::: aside
+See @wooldridge2021, @goin2023
+:::
 
 # What Did We Find?
 
@@ -323,7 +515,7 @@ knitr::kable(bt@table_dataframe) |>
 
 ## Treated households adopted cleaner energy
 
-![](images/sankey-w2.png){fig-align="center" width="70%"}
+![](images/sankey-w2.png){fig-align="center" width="60%"}
 
 ## Treated households adopted cleaner energy
 
@@ -339,10 +531,40 @@ knitr::kable(bt@table_dataframe) |>
 
 ## Policy reduced (only) indoor PM
 
+::: columns
+::: {.column width="20%"}
+:::
+
+::: {.column width="80%"}
+
+```{r, echo=F, message=F, warning=F, out.width="100%", fig.align="center"}
+apt <- read_rds(here("data-clean", 
+  "ap-etwfe-table.rds")) %>%
+  select(category, outcome, estimate_2, ci_2) %>%
+    mutate(
+    # Extract lower bound
+    ci_lower = as.double(str_extract(ci_2, "(?<=\\().+?(?=,)")),         
+    # Extract upper bound
+    ci_upper = as.double(str_extract(ci_2, "(?<=, ).+?(?=\\))")))
+
+ggplot(apt, 
+  aes(x = estimate_2, y = outcome)) + 
+  geom_point() + 
+  geom_errorbarh(aes(xmin = ci_lower, 
+    xmax = ci_upper), height=0.2) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  labs(y = " ", x = "Total Effect (µg/m^3^)") +
+  scale_x_continuous(limits = c(-50, 20)) +
+  facet_wrap(vars(category), nrow=3, scales="free") +
+  theme_asm()
+```
+
+:::
+:::
 ## 
 
 :::{#title-slide .center}
-[**Did the policy affect the mediators?**]{.large}
+[**Did the policy affect the mediators?**]{.blue .large}
 :::
 <br>
 
