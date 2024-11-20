@@ -939,6 +939,7 @@ ETWFE models adjusted for the number of rooms and wintertime occupants in the ho
 ![](images/dag-cde-shown.png){fig-align="center" width="70%"}
 
 ## BP mediated by PM and Temp {background-image="images/dag-cde-shown.png" background-size="15%" background-position="top 1% left 98%"}
+
 ```{r, echo=F, message=F, warning=F, out.width="90%"}
 cdes <- read_rds(here("data-clean", "cde-bp.rds"))
   
@@ -979,6 +980,36 @@ ETWFE model with exposure-mediator interaction, adjusted for time-varying covari
 :::
 
 ## Little mediation for respiratory symptoms
+
+```{r, echo=F, message=F, warning=F, out.width="90%"}
+cde_resp <- read_rds(here("data-clean",
+  "resp-cdes.rds")) %>%
+  filter(outcome=="Any symptom") %>%
+  rename(est0 = est, ci0 = ci) %>%
+  pivot_longer(!outcome,
+    cols_vary = "slowest", 
+    names_to = c(".value", "model"),
+    names_pattern = "([A-Za-z]+)(\\d+)") %>%
+  mutate(
+    # Extract lower bound
+    ci_lower = as.double(str_extract(ci, "(?<=\\().+?(?=,)")),         
+    # Extract upper bound
+    ci_upper = as.double(str_extract(ci, "(?<=, ).+?(?=\\))")),
+    model = factor(model, labels = c("Adjusted Total Effect", 
+    "Mediator: Indoor PM", "Mediator: Indoor Temperature",
+    "Mediator: Indoor PM & Temp")))
+
+ggplot(cde_resp, 
+  aes(x = est, y = model)) + 
+  geom_point() + 
+  geom_errorbarh(aes(xmin = ci_lower, 
+    xmax = ci_upper), height=0.2) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  labs(y = " ", x = "Total Effect (pp)") +
+  scale_x_continuous(limits = c(-25, 5)) +
+  theme_asm() +
+  theme(axis.text.y = element_text(margin = margin(0,20,0,0)))
+```
 
 # What Does It Mean?
 

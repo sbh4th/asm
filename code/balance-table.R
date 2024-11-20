@@ -147,6 +147,19 @@ t1f
 #    `Temperature (°C)`,
 #    `Personal PM2.5 (ug/m3)`,
 #    `Black carbon (ug/m3)`)
+    
+theme_asm <- function() {
+  theme_classic() + 
+    theme(axis.title = element_text(size=18),
+      axis.text = element_text(size = 18),
+      strip.background = element_blank(),
+      strip.text = element_text(size = 16),
+      axis.text.x = element_text(color="gray50"),
+      axis.title.x = element_text(color="gray50"),
+      axis.line.x = element_line(color="gray50"),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank())
+}
 
     
 otm <- read_xlsx(here("data-clean",
@@ -158,48 +171,59 @@ otm <- read_xlsx(here("data-clean",
   filter(str_detect(bp, "Brachial",
                     negate = FALSE)) %>%
   mutate(m = c("Adjusted Total Effect", 
-    "Adjusted Total Effect", "Indoor PM",
-    "Indoor PM", "Indoor Temperature",
-    "Indoor Temperature", "Indoor PM & Temp",
-    "Indoor PM & Temp"),
-    o = rep(c("Systolic", "Diastolic"), times = 4))
+    "Adjusted Total Effect", "Mediator: Indoor PM",
+    "Mediator: Indoor PM", "Mediator: Indoor Temperature",
+    "Mediator: Indoor Temperature", "Mediator: Indoor PM & Temp",
+    "Mediator: Indoor PM & Temp"),
+    o = rep(c("Systolic", "Diastolic"), times = 4),
+    n = rep(1:4, each=2),
+    label = fct_reorder(m, desc(n)))
+  
+write_rds(otm, here("data-clean", "cde-bp.rds"))
   
 p_te <- ggplot(subset(otm, m == "Adjusted Total Effect"), 
-  aes(x = theta_bar, y = m)) + 
+  aes(x = theta_bar, y = label)) + 
   geom_point() + 
   geom_errorbar(aes(xmin = lower_95CI, 
     xmax = upper_95CI), width=0.2) + 
   geom_vline(xintercept = 0, linetype = "dashed") +
-  facet_wrap(vars(bp)) + labs(y = " ", x = "TE (mmHg)") +
-  scale_x_continuous(limits = c(-3.5, 2.6))
+  facet_wrap(vars(bp)) + labs(y = " ", x = "Total Effect (mmHg)") +
+  scale_x_continuous(limits = c(-3.5, 2.6)) +
+  theme_asm()
 
 p_cde <- ggplot(subset(otm, m != "Adjusted Total Effect"), 
-  aes(x = theta_bar, y = m)) + 
+  aes(x = theta_bar, y = label)) + 
   geom_point() + 
   geom_errorbar(aes(xmin = lower_95CI, 
     xmax = upper_95CI), width=0.2) + 
   geom_vline(xintercept = 0, linetype = "dashed") +
   facet_wrap(vars(bp)) + labs(y = " ") +
-  ggtitle("CDE Mediated by:") +
   theme(plot.title = element_text(hjust =-0.6)) +
   scale_x_continuous(limits = c(-3.5, 2.6)) +
-  xlab("CDE (mmHg)")
+  xlab("Controlled Direct Effect (mmHg)") + 
+  theme_asm()
 
-p_te / p_cde + plot_layout(heights = c(1, 2))
+cde_plot <- p_te / p_cde + plot_layout(heights = c(1, 2))
 
-ggplot(otm, 
-  aes(x = theta_bar, y = m)) + 
-  geom_point() + 
-  geom_errorbar(aes(xmin = lower_95CI, 
-    xmax = upper_95CI), width=0.2) + 
-  facet_wrap(vars(bp))
+ggsave(here("images", "cde-plot.png"), cde_plot, 
+  width = 9, height = 4.5)
+
+
+op <- read_rds(here("data-clean", 
+  "op-table.rds")) %>%
+  filter(category %in% c("Self-reported (pp)",
+    "Measured", "Outdoor")) %>%
+  select(-estimate_1, -ci_1)
   
-%>%
-  mutate(ci = paste("(", sprintf('%.1f', 
-    lower_95CI), ", ", sprintf('%.1f', 
-    upper_95CI), ")", sep="")) %>%
-  rename(est = theta_bar) %>%
-  select(model, bp, est, ci) %>%
-  pivot_wider(names_from = model, 
-    values_from = c(est, ci), 
-    names_vary = "slowest")
+colnames(op) <- c(" ", " ", "Obs", "ATT", "(95% CI)")
+
+tt(op) %>%
+  group_tt(
+    i = list("Respiratory outcomes" = 1,
+             "Inflammatory markers" = 8)) %>%
+  style_tt(i = c(1, 9), align = "l", bold=T) %>%
+  style_tt(
+    i = 2, j = 1, rowspan = 6, alignv = "t") %>%
+  style_tt(
+    i = 10, j = 1, rowspan = 4, alignv = "t") %>%
+  format_tt(j=4, sprintf = "%.1f") 
