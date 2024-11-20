@@ -1,0 +1,8 @@
+---
+bibliography: /var/folders/v9/q_gc75fs64jf9bgm1pm9bn880000gn/T//Rtmpv3FvVS/filec05b640a43cd.bib
+nocite: |
+  @emo, @here, @kableExtra, @knitr1, @knitr2, @knitr3, @modelsummary, @osfr, @patchwork, @pdftools, @readxl, @rmarkdown1, @rmarkdown2, @rmarkdown3, @tidyverse, @tinytable
+---
+
+# Software Bibliography
+

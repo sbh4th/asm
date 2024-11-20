@@ -1,9 +1,9 @@
-#  program:  temp-fig.R
+#  program:  ap-fig.R
 #  task:     temperature estimates
 #  input:    
 #  output:   
 #  project:  ASM
-#  author:   sam harper \ 2024-11-14
+#  author:   sam harper \ 2024-11-15
 
 # load libraries
 library(here)
@@ -22,30 +22,65 @@ theme_asm <- function() {
       axis.title.x = element_text(color="gray50"),
       axis.line.x = element_line(color="gray50"),
       axis.line.y = element_blank(),
-      axis.ticks.y = element_blank())
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(size = 18))
 }
 
-stemp_table <- read_xlsx(here("data-clean",
-  "marginal_temp_results.xlsx")) %>%
-  mutate(
-    # Extract mean
-    estimate = as.double(str_extract(att, "^[^\\(]+")),                 # Extract lower bound
-    ci_lower = as.double(str_extract(att, "(?<=\\().+?(?=,)")),         # Extract upper bound
-    ci_upper = as.double(str_extract(att, "(?<=, ).+?(?=\\))")),
-    # rename model for reshape
-    model = case_when(
-      `Covariate adjustment` == "DiD" ~ 1,
-      `Covariate adjustment` != "DiD" ~ 2,),
-    n = rep(c(2:7, 1), each=2),
-    label = fct_reorder(`Outcome metric`, desc(n))) %>%
-  filter(model == 2)
+apt <- read_rds(here("data-clean", 
+  "ap-etwfe-table.rds")) %>%
+  select(category, outcome, estimate_2, ci_2) %>%
+    mutate(
+    # Extract lower bound
+    ci_lower = as.double(str_extract(ci_2, "(?<=\\().+?(?=,)")),         
+    # Extract upper bound
+    ci_upper = as.double(str_extract(ci_2, "(?<=, ).+?(?=\\))")))
 
-p_te <- ggplot(stemp_table, 
-  aes(x = estimate, y = label)) + 
+pplot <- ggplot(subset(apt, category=="Personal"), 
+  aes(x = estimate_2, y = outcome)) + 
   geom_point() + 
-  geom_errorbar(aes(xmin = ci_lower, 
-    xmax = ci_upper), width=0.2) + 
+  geom_errorbarh(aes(xmin = ci_lower, 
+    xmax = ci_upper), height=0.2) + 
   geom_vline(xintercept = 0, linetype = "dashed") +
-  labs(y = " ", x = "Total Effect (°C)") +
-  scale_x_continuous(limits = c(-1, 6.1)) +
-  theme_asm()
+  labs(y = " ", x = "Total Effect (µg/m^3^)") +
+  scale_x_continuous(limits = c(-50, 20)) +
+  ggtitle("Personal Exposure") +
+  theme_asm() + 
+  theme(plot.title = element_text(hjust = 0))
+
+iplot <- ggplot(subset(apt, category=="Indoor"), 
+  aes(x = estimate_2, y = outcome)) + 
+  geom_point() + 
+  geom_errorbarh(aes(xmin = ci_lower, 
+    xmax = ci_upper), height=0.2) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  labs(y = " ", x = "Total Effect (µg/m^3^)") +
+  scale_x_continuous(limits = c(-50, 20)) +
+  ggtitle("Indoor") +
+  theme_asm() + 
+  theme(plot.title = element_text(hjust = 0))
+
+oplot <- ggplot(subset(apt, category=="Outdoor"), 
+  aes(x = estimate_2, y = outcome)) + 
+  geom_point() + 
+  geom_errorbarh(aes(xmin = ci_lower, 
+    xmax = ci_upper), height=0.2) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  labs(y = " ", x = "Total Effect (µg/m^3^)") +
+  scale_x_continuous(limits = c(-50, 20)) +
+  ggtitle("Outdoor") +
+  theme_asm() + 
+  theme(plot.title = element_text(hjust = 0))
+
+pplot / iplot / oplot + plot_layout(heights = c(1, 1, 1))
+
+ggplot(apt, 
+  aes(x = estimate_2, y = outcome)) + 
+  geom_point() + 
+  geom_errorbarh(aes(xmin = ci_lower, 
+    xmax = ci_upper), height=0.2) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  labs(y = " ", x = "Total Effect (µg/m^3^)") +
+  scale_x_continuous(limits = c(-50, 20)) +
+  facet_wrap(vars(category), nrow=3, scales="free") +
+  theme_asm() + 
+  theme(plot.title = element_text(hjust = 0))
