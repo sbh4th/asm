@@ -80,7 +80,6 @@ theme_asm <- function() {
 - Social group differences, time trends, decomposition
   
 ![](images/jama2007.png){.absolute top=200 left=0 width="450" height="600"}
-
 ![](images/jama2012.png){.absolute top=200 left=200 width="450" height="600"}
 
 ![](images/healthaffairs2014.png){.absolute top=200 left=400 width="450" height="600"}
@@ -92,21 +91,39 @@ theme_asm <- function() {
 
 ## Impact of interventions and policies
 
+![](images/soc-epid-questions.png){fig-align="center"}
+
+::: aside
+@harper2012
+:::
+
+## Impact of interventions and policies
+
 - Substance use, maternal / child health, social and economic policies
 
-![](images/ineq1.png){.absolute top=200 left=0 width="450" height="600"}
-![](images/ineq2.png){.absolute top=200 left=200 width="450" height="600"}
-![](images/ineq3.png){.absolute top=200 left=400 width="450" height="600"}
-![](images/ineq4.png){.absolute top=200 left=600 width="450" height="600"}
-![](images/ineq5.png){.absolute top=200 left=800 width="450" height="600"}
-![](images/ineq7.png){.absolute top=200 left=1000 width="450" height="600"}
-![](images/ineq6.png){.absolute top=200 left=1200 width="450" height="600"}
+![](images/ie5.png){.fragment .absolute top=200 left=0 width="450" height="600"}
+![](images/ie1.png){.fragment .absolute top=200 left=150 width="450" height="600"}
+![](images/ie3.png){.fragment .absolute top=200 left=300 width="400" height="600"}
+![](images/ie2.png){.fragment .absolute top=200 left=450 width="450" height="600"}
+![](images/ie9.png){.fragment .absolute top=200 left=600 width="450" height="600"}
+![](images/ie4.png){.fragment .absolute top=200 left=750 width="450" height="600"}
+![](images/ie7.png){.fragment .absolute top=200 left=900 width="450" height="600"}
+![](images/ie6.png){.fragment .absolute top=200 left=1050 width="450" height="600"}
 
+![](images/ie8.png){.fragment .absolute top=200 left=1200 width="450" height="600"}
+
+## Current projects
+
+![](images/proj-ece.png){.absolute top=75 left=0 width=700 height=800}
+![](images/proj-disc.png){.fragment .absolute top=75 left=450 width=700 height=800}
+![](images/proj-bhet.png){.fragment .absolute top=75 left=900 width=700 height=800}
 
 ## {.center background-image="images/sabrie-nyt-coal.png"} 
 
 :::{#title-slide .center}
 [**Impacts of a Clean Energy Transition Policy**]{.white .large}
+<br>
+<br>
 :::
 
 ::: aside
@@ -120,22 +137,23 @@ Image credit: [NY Times](https://www.nytimes.com/2018/02/10/world/asia/china-coa
 
 **McGill University** 
 
-- Jill Baumgartner (Epidemiology)
 - Sam Harper (Epidemiology)
-- Brian Robinson (Geography) 
-- Chris Barrington-Leigh (Environment)
-- Talia Sternbach (PhD Epidemiology)
-- Xiang Zhang (PhD Geography) 
+- Jill Baumgartner (Epidemiology)
+- Brian Robinson (Geography)
+- Chris Barrington-Leigh (Economics) 
+- Koren Mann (Toxicology)
+- Arijit Nandi (Epidemiology)
+- Robert Platt (Biostatistics)
 
 **Colorado State University**
 
 - Ellison Carter (Engineering)
-- Xiaoying Li (postdoc – based at McGill)
+- Xiaoying Li (Engineering)
 
 **Chinese Academy of Sciences **  
 
 - Yuanxun Zhang (Air Chemistry)
-- Jing Shang (postdoc)
+- Zhongjie Fan (Cardiology)
 
 :::
 
@@ -155,7 +173,6 @@ Image credit: [NY Times](https://www.nytimes.com/2018/02/10/world/asia/china-coa
 - Alison Dickson (Environ & Climate Change Canada) 
 - Iris Jin, Asia Pacific Foundation of Canada 
 - Richard Fuller, Pure Earth Foundation
-- Many government agencies, UN Foundation, WHO
 
 **Funders**
 
@@ -176,16 +193,17 @@ Image credit: [NY Times](https://www.nytimes.com/2018/02/10/world/asia/china-coa
 ~ 30% of global emissions
 </center>
 
-![](images/china-emissions.png){fig-align="center" width="80%"}
+![](images/china-emissions.png){fig-align="center" width="78%"}
 :::
 
-::: {.column width="50%"}
+
+::: {.column width="50%" .fragment}
 
 <center>
 Still dominated by coal
 </center>
 
-![](images/china-production.png){fig-align="center" width="80%"}
+![](images/china-production.png){fig-align="center" width="75%"}
 :::
 :::
 
@@ -198,22 +216,21 @@ Image credits: [The Economist](https://www.economist.com/china/2023/11/27/will-c
 ::: columns
 ::: {.column width="50%"}
 
-- Coal contains fluorine, arsenic, lead, selenium and mercury, which are not destroyed by combustion; 
-- Technical constraints make it difficult to burn coal cleanly in households; 
-
-![](images/coalstove-1.jpg){.absolute top=450 left=100 width="200" height="300"}
-![](images/coalstove-2.jpg){.absolute top=450 left=400 width="200" height="300"}
-
-:::
-
-::: {.column width="50%"}
-
-<br>
-
 ![](images/liu-2016-fig1.png){fig-align="center" width="100%"}
 
 - Residential coal burning makes a substantial contribution to emissions
 - Particularly in winter months
+
+:::
+
+::: {.column width="50%" .fragment}
+
+- Coal contains fluorine, arsenic, lead, selenium and mercury, which are not destroyed by combustion; 
+- Technical constraints make it difficult to burn coal cleanly in households; 
+
+![](images/coalstove-1.jpg){.absolute top=450 left=1000 width="200" height="300"}
+![](images/coalstove-2.jpg){.absolute top=450 left=1300 width="200" height="300"}
+
 
 :::
 :::
@@ -243,6 +260,25 @@ Image credits: [The Economist](https://www.economist.com/china/2023/11/27/will-c
 :::
 
 ## {background-image="images/coal-coverage.png" background-size="contain"} 
+
+## Low indoor temps and higher PM~2.5~ increase BP
+
+::: columns
+::: {.column width="50%"}
+
+![](images/lewington-2012.png){width="80%"}
+:::
+
+::: {.column width="50%"}
+
+![](images/baumgartner-2011.png){width="75%"}
+
+:::
+:::
+
+::: aside
+Images: @lewington2012, @baumgartner2011. Also see @sternbach2022
+:::
 
 ## Village committees
 
@@ -387,9 +423,9 @@ Actually, read @callaway2021a
 ## Data Collection Overview
 
 :::{.r-stack}
-![](images/data-collection-flow.png){.fragment fig-align="center" width="80%"}
+![](images/data-collection-flow.png){fig-align="center" width="80%"}
 
-![](images/Participation-flowchart-Apr12.png){.fragment}
+![](images/Participation-flowchart-Apr12.png){.fragment .absolute top=400 left=-60}
 :::
 
 
@@ -593,13 +629,59 @@ Challenges:
 
 - Time-varying confounders
 
-- Staggered implementation
+- [Staggered implementation]{.red}
 :::
 
 ::: {.column width="70%"}
 
 ![](images/didfig.png){fig-align="center" width="80%"}
 :::
+:::
+
+## Challenges with staggered adoption
+
+::: columns
+::: {.column width="30%"}
+
+- Using earlier treated groups as controls only 'works' under homogeneity.
+
+- Early treatment effects get subtracted from the DD estimate.
+
+- Generates poor summary estimate if there is heterogeneity.
+:::
+
+::: {.column width="70%"}
+![](images/baker-f1.png){fig-align="center" width="80%"}
+:::
+:::
+
+::: aside
+Image: [Andrew Baker](https://andrewcbaker.netlify.app/2019/09/25/difference-in-differences-methodology/). See also @goodman-bacon2021, @callaway2021a, @sun2021
+:::
+
+## Key Assumption: Parallel Trends
+:::: columns
+::: {.column width="30%"}
+
+![](images/gertler-parallel.png){fig-align="center" width="120%"}
+
+:::
+
+:::{.column width="70%"}
+-   Basic DD controls for any time invariant characteristics of both treated and control groups.
+
+-   Does not control for any **time-varying** characteristics.
+
+-   If another policy/intervention occurs in the treated (or control) group at the same time as the intervention, we cannot cleanly identify the effect of the program.
+
+-   DD main assumption: in the absence of the intervention treated and control groups would have displayed similar **trends**.
+    
+- This is called the *parallel trends* assumption.
+:::
+::::
+
+:::aside
+Impossible to verify, see @gertler2016.
 :::
 
 ## Quantities of interest {background-image="images/dag-te-shown.png" background-size="30%" background-position="top 1% left 98%"}
