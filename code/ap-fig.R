@@ -41,7 +41,7 @@ pplot <- ggplot(subset(apt, category=="Personal"),
   geom_errorbarh(aes(xmin = ci_lower, 
     xmax = ci_upper), height=0.2) + 
   geom_vline(xintercept = 0, linetype = "dashed") +
-  labs(y = " ", x = "Total Effect (µg/m^3^)") +
+  labs(y = " ", x = bquote('Total Effect'~(µg/m^3))) +
   scale_x_continuous(limits = c(-50, 20)) +
   ggtitle("Personal Exposure") +
   theme_asm() + 
