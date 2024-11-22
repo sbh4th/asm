@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.55">
+
+  <meta name="author" content="Sam Harper">
+  <meta name="dcterms.date" content="2024-11-21">
+  <title>Impacts of transitioning to clean household energy</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="images/mcgill-epi-logo.png" data-background-position="50% 90%" data-background-size="30%" class="quarto-title-block center">
+  <h1 class="title">Impacts of transitioning to clean household energy</h1>
+  <p class="subtitle">Evidence from policy reform in peri-urban Beijing</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Sam Harper 
+</div>
+</div>
+</div>
+
+  <p class="date">2024-11-21</p>
+</section>
+<section>
+<section id="background" class="title-slide slide level1 center">
+<h1>Background</h1>
+
+</section>
+<section id="prior-work" class="slide level2">
+<h2>Prior work</h2>
+<ul>
+<li>Measuring and monitoring health inequalities</li>
+<li>Analysis and decomposition of life expectancy gaps</li>
+<li>Evaluating the impact of policy interventions</li>
+</ul>
+<p><img data-src="images/usc.png" class="absolute" style="top: 400px; left: 0px; width: 400px; height: 400px; " alt="MSPH"> <img data-src="images/um-seal.png" class="absolute" style="top: 400px; left: 500px; width: 300px; height: 300px; " alt="PhD"> <img data-src="images/mcgill-image.png" class="absolute" style="top: 400px; left: 1000px; width: 300px; height: 400px; " alt="Postdoc"></p>
+</section>
+<section id="measurment-and-analysis-of-health-inequalities" class="slide level2">
+<h2>Measurment and analysis of health inequalities</h2>
+<ul>
+<li>Methodological development, software, applied analysis</li>
+</ul>
+<p><img data-src="images/ineq1.png" class="absolute" style="top: 200px; left: 0px; width: 450px; height: 600px; "> <img data-src="images/ineq2.png" class="absolute" style="top: 200px; left: 200px; width: 450px; height: 600px; "> <img data-src="images/ineq3.png" class="absolute" style="top: 200px; left: 400px; width: 450px; height: 600px; "> <img data-src="images/ineq4.png" class="absolute" style="top: 200px; left: 600px; width: 450px; height: 600px; "> <img data-src="images/ineq5.png" class="absolute" style="top: 200px; left: 800px; width: 450px; height: 600px; "> <img data-src="images/ineq7.png" class="absolute" style="top: 200px; left: 1000px; width: 450px; height: 600px; "> <img data-src="images/ineq6.png" class="absolute" style="top: 200px; left: 1200px; width: 450px; height: 600px; "></p>
+</section>
+<section id="social-inequalities-in-life-expectancy" class="slide level2">
+<h2>Social inequalities in life expectancy</h2>
+<ul>
+<li>Social group differences, time trends, decomposition</li>
+</ul>
+<p><img data-src="images/jama2007.png" class="absolute" style="top: 200px; left: 0px; width: 450px; height: 600px; "> <img data-src="images/jama2012.png" class="absolute" style="top: 200px; left: 200px; width: 450px; height: 600px; "></p>
+<p><img data-src="images/healthaffairs2014.png" class="absolute" style="top: 200px; left: 400px; width: 450px; height: 600px; "> <img data-src="images/epidem2017.png" class="absolute" style="top: 200px; left: 600px; width: 450px; height: 600px; "></p>
+<p><img data-src="images/healthplace2018.png" class="absolute" style="top: 200px; left: 800px; width: 450px; height: 600px; "> <img data-src="images/phreports2019.png" class="absolute" style="top: 200px; left: 1000px; width: 450px; height: 600px; "> <img data-src="images/arph2021.png" class="absolute" style="top: 200px; left: 1200px; width: 450px; height: 600px; "></p>
+</section>
+<section id="impact-of-interventions-and-policies" class="slide level2">
+<h2>Impact of interventions and policies</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/soc-epid-questions.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+
+<aside><div>
+<p><span class="citation" data-cites="harper2012">Harper and Strumpf (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p>
+</div></aside></section>
+<section id="impact-of-interventions-and-policies-1" class="slide level2">
+<h2>Impact of interventions and policies</h2>
+<ul>
+<li>Substance use, maternal / child health, social and economic policies</li>
+</ul>
+<p><img data-src="images/ie5.png" class="fragment absolute" style="top: 200px; left: 0px; width: 450px; height: 600px; "> <img data-src="images/ie1.png" class="fragment absolute" style="top: 200px; left: 150px; width: 450px; height: 600px; "> <img data-src="images/ie3.png" class="fragment absolute" style="top: 200px; left: 300px; width: 400px; height: 600px; "> <img data-src="images/ie2.png" class="fragment absolute" style="top: 200px; left: 450px; width: 450px; height: 600px; "> <img data-src="images/ie9.png" class="fragment absolute" style="top: 200px; left: 600px; width: 450px; height: 600px; "> <img data-src="images/ie4.png" class="fragment absolute" style="top: 200px; left: 750px; width: 450px; height: 600px; "> <img data-src="images/ie7.png" class="fragment absolute" style="top: 200px; left: 900px; width: 450px; height: 600px; "> <img data-src="images/ie6.png" class="fragment absolute" style="top: 200px; left: 1050px; width: 450px; height: 600px; "></p>
+<p><img data-src="images/ie8.png" class="fragment absolute" style="top: 200px; left: 1200px; width: 450px; height: 600px; "></p>
+
+<aside><div>
+<p>More at our 3PO <a href="https://3po.ca">website</a></p>
+</div></aside></section>
+<section id="current-projects" class="slide level2">
+<h2>Current projects</h2>
+<p><img data-src="images/proj-ece.png" class="absolute" style="top: 75px; left: 0px; width: 700px; height: 800px; "> <img data-src="images/proj-disc.png" class="fragment absolute" style="top: 75px; left: 450px; width: 700px; height: 800px; "> <img data-src="images/proj-bhet.png" class="fragment absolute" style="top: 75px; left: 900px; width: 700px; height: 800px; "></p>
+</section>
+<section id="section" class="slide level2 center" data-background-image="images/sabrie-nyt-coal.png">
+<h2></h2>
+<div id="title-slide" class="center">
+<p><span class="white large"><strong>Impacts of a Clean Energy Transition Policy</strong></span></p>
+</div>
+</section>
+<section id="interdisciplinary-team" class="slide level2 smaller">
+<h2>Interdisciplinary Team</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>McGill University</strong></p>
+<ul>
+<li>Sam Harper (Epidemiology)</li>
+<li>Jill Baumgartner (Epidemiology)</li>
+<li>Brian Robinson (Geography)</li>
+<li>Chris Barrington-Leigh (Economics)</li>
+<li>Koren Mann (Toxicology)</li>
+<li>Arijit Nandi (Epidemiology)</li>
+<li>Robert Platt (Biostatistics)</li>
+</ul>
+<p><strong>Colorado State University</strong></p>
+<ul>
+<li>Ellison Carter (Engineering)</li>
+<li>Xiaoying Li (Engineering)</li>
+</ul>
+<p><strong>Chinese Academy of Sciences </strong></p>
+<ul>
+<li>Yuanxun Zhang (Air Chemistry)</li>
+<li>Zhongjie Fan (Cardiology)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Peking University</strong></p>
+<ul>
+<li>Shu Tao (Environmental Science)</li>
+<li>Yaojie Li (project coordinator)</li>
+</ul>
+<p><strong>China National Center for Cardiovascular Disease</strong></p>
+<ul>
+<li>Liancheng Zhao (CVD epidemiology)</li>
+</ul>
+<p><strong>Knowledge Users</strong></p>
+<ul>
+<li>Barry Jessiman (Health Canada)</li>
+<li>Alison Dickson (Environ &amp; Climate Change Canada)</li>
+<li>Iris Jin, Asia Pacific Foundation of Canada</li>
+<li>Richard Fuller, Pure Earth Foundation</li>
+</ul>
+<p><strong>Funders</strong></p>
+<ul>
+<li>Canadian Institutes of Health Research</li>
+<li>Health Effects Institute</li>
+</ul>
+</div></div>
+</section></section>
+<section>
+<section id="why-did-we-start" class="title-slide slide level1 center">
+<h1>Why Did We Start?</h1>
+
+</section>
+<section id="the-role-of-coal-in-china" class="slide level2">
+<h2>The role of coal in China</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+~ 30% of global emissions
+</center>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/china-emissions.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<center>
+Still dominated by coal
+</center>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/china-production.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+</figure>
+</div>
+</div></div>
+
+<aside><div>
+<p>Image credits: <a href="https://www.economist.com/china/2023/11/27/will-china-save-the-planet-or-destroy-it">The Economist</a></p>
+</div></aside></section>
+<section id="residential-coal-burning-in-china" class="slide level2">
+<h2>Residential coal burning in China</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/liu-2016-fig1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Residential coal burning makes a substantial contribution to emissions</li>
+<li>Particularly in winter months</li>
+</ul>
+</div><div class="column fragment" style="width:50%;">
+<ul>
+<li>Coal contains fluorine, arsenic, lead, selenium and mercury, which are not destroyed by combustion;</li>
+<li>Technical constraints make it difficult to burn coal cleanly in households;</li>
+</ul>
+<p><img data-src="images/coalstove-1.jpg" class="absolute" style="top: 450px; left: 1000px; width: 200px; height: 300px; "> <img data-src="images/coalstove-2.jpg" class="absolute" style="top: 450px; left: 1300px; width: 200px; height: 300px; "></p>
+</div></div>
+
+<aside><div>
+<p><span class="citation" data-cites="liu2016">Liu et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></p>
+</div></aside></section>
+<section id="policy-context" class="slide level2">
+<h2>Policy Context</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Beijing designated “coal restricted areas”</p></li>
+<li><p>Government subsidized electric or gas-powered heat pumps (80% of $4,500 cost)</p></li>
+<li><p>2017: required 1.5 million people to halt coal use (scaled to &gt;2 million by ambitious local officials)</p></li>
+<li><p>Stepped implementation from 2017-2021 in Beijing and northern China (63 million homes)</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/beijing-policy.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="coal-to-clean-energy-program" class="slide level2">
+<h2>“Coal to Clean Energy Program”</h2>
+<ul>
+<li>Village-level intervention.</li>
+<li>Subsidized purchase of heat pump; electricity subsidized regionally.</li>
+<li>Remove coal stoves.</li>
+<li>Retrofit existing homes or build new homes in the village.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/transition-fig.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</section>
+<section id="section-1" class="slide level2" data-background-image="images/coal-coverage.png" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="low-indoor-temps-and-higher-pm2.5-increase-bp" class="slide level2">
+<h2>Low indoor temps and higher PM<sub>2.5</sub> increase BP</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/lewington-2012.png" style="width:80.0%"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/baumgartner-2011.png" style="width:75.0%"></p>
+</div></div>
+
+<aside><div>
+<p>Images: <span class="citation" data-cites="lewington2012">Lewington et al. (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span>, <span class="citation" data-cites="baumgartner2011">Baumgartner et al. (<a href="#/references" role="doc-biblioref" onclick="">2011</a>)</span>. Also see <span class="citation" data-cites="sternbach2022">Sternbach et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
+</div></aside></section>
+<section id="research-gaps" class="slide level2" data-background-image="images/lai-2024-title.png" data-background-size="40%" data-background-position="top 20% left 90%">
+<h2>Research Gaps</h2>
+<ul>
+<li><p>Most prior work only on cookstoves</p></li>
+<li><p>Several RCTs</p></li>
+<li><p>Mixed evidence on air pollution</p></li>
+<li><p>Challenges with uptake</p></li>
+<li><p>Multiple sources (e.g., stove-stacking)</p></li>
+<li><p>Unclear whether possible to scale-up</p></li>
+<li><p>Weaker and mixed evidence on health impacts, even when HAP reduced</p></li>
+</ul>
+<blockquote>
+<p>Household energy solutions need to go beyond cooking interventions alone; there are multiple sources that contribute to HAP</p>
+</blockquote>
+
+<aside><div>
+<p><span class="citation" data-cites="lai2024">Lai et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span></p>
+</div></aside></section>
+<section id="overall-study-objectives" class="slide level2">
+<h2>Overall Study Objectives</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:20%;">
+
+</div><div class="column" style="width:75%;">
+<h3 id="aim-1.">Aim 1. 👈</h3>
+<p>Estimate the total effect of the intervention.</p>
+<h3 id="aim-2.">Aim 2. ❌</h3>
+<p>Estimate the contribution of changes in the chemical composition of <span class="math inline">\(PM_{2.5}\)</span> to the overall effect on health outcomes.</p>
+<h3 id="aim-3.">Aim 3. 👈</h3>
+<p>Examine alternative <span class="blue">pathways and mechanisms</span> that may contribute to the intervention’s impact.</p>
+</div></div>
+</section></section>
+<section>
+<section id="what-did-we-do" class="title-slide slide level1 center">
+<h1>What Did We Do?</h1>
+
+</section>
+<section id="village-sampling" class="slide level2">
+<h2>Village sampling</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<ul>
+<li><p>Identified 50 villages not yet exposed to policy</p></li>
+<li><p>Randomly selected ~20 homes in each village</p></li>
+<li><p>Enrolled 1 individual per home</p></li>
+</ul>
+</div><div class="column" style="width:75%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/village-map.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="timing-of-study-village-treatment-by-the-policy" class="slide level2">
+<h2>Timing of study village treatment by the policy</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/rollout.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</section>
+<section id="data-collection-overview" class="slide level2">
+<h2>Data Collection Overview</h2>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/data-collection-flow.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+<p><img data-src="images/Participation-flowchart-Apr12.png" class="fragment absolute" style="top: 400px; left: -60px; "></p>
+</div>
+</section>
+<section id="measurements" class="slide level2 smaller" data-background-image="images/measurement-pics.png" data-background-size="35%" data-background-position="top 20% left 90%">
+<h2>Measurements</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><strong>Village</strong></p>
+<ul>
+<li>Outdoor air pollution (1-2 months per season)</li>
+<li>Information on village policies/programs</li>
+</ul>
+<p><strong>Household</strong></p>
+<ul>
+<li>Questionnaire to assess energy patterns and related expenditures</li>
+<li>Indoor air temperature (~75% of homes for 2+ winter months)</li>
+<li>Electricity use based on meters</li>
+</ul>
+<p><strong>Individual</strong></p>
+<ul>
+<li>Questionnaires on health status, behaviors, conditions, and medication use</li>
+<li>Exposures to PM<sub>2.5</sub> and black carbon (50% of participants)</li>
+<li>Health measurements (BP, self-reported respiratory symptoms, blood inflammatory and oxidative stress markers (~75%), grip strength (~75%), airway inflammation via exhaled NO (~25%)</li>
+</ul>
+</div><div class="column" style="width:40%;">
+
+</div></div>
+</section>
+<section id="blood-pressure-measurement" class="slide level2">
+<h2>Blood pressure measurement</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Automated oscillometric device.</li>
+<li>Calibrated by manufacturer before Years 1 and 4.</li>
+</ul>
+<p><br></p>
+<ul>
+<li>Home BP measurement by trained staff.</li>
+<li>Measured blood pressure 3 to 5 times on participants supported right arm, after 5 mins of quiet, seated rest.</li>
+<li>Mean of final 2 measurements used in analysis.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/bp-monitor.jpg" class="quarto-figure quarto-figure-center" style="width:40.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/bp-measurement.png" class="quarto-figure quarto-figure-center" style="width:40.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="indoor-temperature" class="slide level2" data-background-image="images/indoor-temp.png" data-background-size="70%" data-background-position="top 85% left 95%">
+<h2>Indoor temperature</h2>
+<ul>
+<li>Measured indoor temperature in the 5-min before BP.</li>
+<li>Long-term measurement in a subsample of households with sensor taped to household wall.</li>
+<li>Thermochron iButton or LabJack Digit-THL sensors.</li>
+<li>Interior wall of most commonly used room.</li>
+<li>1.5m height (~ participant height).</li>
+<li>Measured 5-12 months</li>
+<li>125-min sampling interval.</li>
+</ul>
+</section>
+<section id="indoor-air-pollution-pm2.5" class="slide level2">
+<h2>Indoor air pollution (PM<sub>2.5</sub>)</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><strong>1. Long-term measurement with real-time sensors.</strong></p>
+<ul>
+<li>6 households per village.</li>
+<li>Run with standard measurements (BAM/TOEM) pre- and post-data collection, each year.</li>
+<li>Measured 5-mo., 1-min sampling interval</li>
+</ul>
+<p><strong>2. 24h measurement with filter-based instrument.</strong></p>
+<ul>
+<li>3 households per village.</li>
+<li>Accepted (gold-standard) measurement.</li>
+<li>Used to calibrate real-time measurements.</li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><img data-src="images/ipm-sensor.png" class="quarto-figure quarto-figure-center" style="width:80.0%"> <img data-src="images/ipm-charging.jpg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</div></div>
+</section>
+<section id="basic-idea-for-mediation-study" class="slide level2">
+<h2>Basic idea for mediation study</h2>
+<p><br></p>
+<p>To understand the pathways, mechanisms, and intermediates through which a treatment affects an outcome.</p>
+<p><br></p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:20%;">
+
+</div><div class="column" style="width:75%;">
+<h3 id="how-much-of-the-policy-effect-is-through">How much of the policy effect is through:</h3>
+<ul>
+<li>Reduced exposure to PM<sub>2.5</sub></li>
+<li>Other pathways (indoor temperature, behavioral changes)</li>
+<li>Consider multiple mediators</li>
+</ul>
+</div></div>
+</div>
+</section>
+<section id="first-part-of-mediation-total-effect" class="slide level2">
+<h2>First part of mediation: total effect</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:25%;">
+<p><br></p>
+<p>Step 1: Estimate the total effect of <span class="math inline">\(T\)</span>.</p>
+</div><div class="column" style="width:75%;">
+<p><br><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dag-te.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="second-part-of-mediation-decomposition" class="slide level2">
+<h2>Second part of mediation: decomposition</h2>
+<p>Basic idea: understand pathways of effects</p>
+<div class="columns">
+<div class="column" style="width:25%;">
+<p><br></p>
+<p>Step 2: Estimate how much of the total effect is due to PM<sub>2.5</sub> vs.&nbsp;other pathways?</p>
+</div><div class="column" style="width:75%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dag-cde-simple.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="second-part-of-mediation-decomposition-1" class="slide level2">
+<h2>Second part of mediation: decomposition</h2>
+<p>Basic idea: understand pathways of effects</p>
+<div class="columns">
+<div class="column" style="width:25%;">
+<p><br></p>
+<p>Step 2: Estimate how much of the total effect is due to PM<sub>2.5</sub> vs.&nbsp;other pathways?</p>
+</div><div class="column" style="width:75%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/cde-dag.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="quantities-of-interest" class="slide level2" data-background-image="images/dag-te-shown.png" data-background-size="30%" data-background-position="top 1% left 98%">
+<h2>Quantities of interest</h2>
+<p><br></p>
+<p>Total effect: <span class="math display">\[{E[Y|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X}\]</span></p>
+<p>This equation estimates the total effect of the ban: <span class="math display">\[\color{blue}{TE=\beta_{1}(T^{*}-T)}\]</span> where <span class="math inline">\(T^{*}\)</span> is exposure to ban and <span class="math inline">\(T\)</span> is no exposure.</p>
+</section>
+<section id="mediation-model" class="slide level2" data-background-image="images/dag-cde-shown.png" data-background-size="30%" data-background-position="top 1% left 98%">
+<h2>Mediation model</h2>
+<p>Estimate two regressions:</p>
+<ol type="1">
+<li>Treatment on mediator:</li>
+</ol>
+<p><span class="math display">\[\color{red}{E[M|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X}\]</span></p>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Treatment and mediator on outcome:</li>
+</ol>
+<p><span class="math display">\[E[Y|T,X,M] = \theta_{0} + \theta_{1}T + \theta_{2}M + \theta_{3}TM + \theta_{4}X + \theta_{5}W\]</span></p>
+<p>Second equation estimates the “Controlled Direct Effect”: <span class="math display">\[\color{violet}{CDE=\theta_{1}+\theta_{3}TM}\]</span></p>
+
+</div>
+<aside><div>
+<p>See <span class="citation" data-cites="vanderweele2015">VanderWeele (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>. Other quantities include the “Natural Direct Effect” (<span class="math inline">\(\theta_{1} + \theta_{3}(\beta_{0} + \beta_{1} + \beta_{2})\)</span>) and the “Natural Indirect Effect” (<span class="math inline">\(\theta_{2}\beta_{1} + \theta_{3}\beta_{1}\)</span>)]</p>
+</div></aside></section>
+<section id="what-the-hell-is-the-cde" class="slide level2">
+<h2>What the hell is the CDE?</h2>
+<p><br></p>
+<h3 id="interpretation">Interpretation</h3>
+<p><em>This effect is the contrast between the counterfactual outcome if the individual were exposed at <span class="math inline">\(T=t\)</span> and the counterfactual outcome if the same individual were exposed at</em> <span class="math inline">\(T=t*\)</span>, <em>with the mediator set to a fixed level</em> <span class="math inline">\(M=m\)</span>.</p>
+<div class="fragment">
+<p><br></p>
+<h3 id="english">English:</h3>
+<p><em>“How much would blood pressure change if the policy were implemented and we held <span class="math inline">\(PM_{2.5}\)</span> fixed at</em> <span class="math inline">\(m\)</span> <em>?“</em></p>
+</div>
+</section>
+<section id="key-assumptions" class="slide level2" data-background-image="images/dag-assumptions.png" data-background-size="50%" data-background-position="top 20% left 90%">
+<h2>Key assumptions</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><br> <br></p>
+<p>Assumptions for valid CDE:</p>
+<ul>
+<li>No confounding of the total effect.</li>
+<li>No confounding of the mediator-outcome effect.</li>
+</ul>
+</div><div class="column" style="width:60%;">
+
+</div></div>
+</section>
+<section id="basic-design-difference-in-differences" class="slide level2">
+<h2>Basic Design: Difference-in-Differences</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Need a <em>counterfactual</em> for treated group.</p>
+<p><br></p>
+<p>Challenges:</p>
+<ul>
+<li><p>Group differences</p></li>
+<li><p>Time trends</p></li>
+<li><p>Time-varying confounders</p></li>
+<li><p><span class="red">Staggered implementation</span></p></li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/didfig.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="challenges-with-staggered-adoption" class="slide level2">
+<h2>Challenges with staggered adoption</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li><p>Using earlier treated groups as controls only ‘works’ under homogeneity.</p></li>
+<li><p>Early treatment effects get subtracted from the DD estimate.</p></li>
+<li><p>Generates poor summary estimate if there is heterogeneity.</p></li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/baker-f1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
+
+<aside><div>
+<p>Image: <a href="https://andrewcbaker.netlify.app/2019/09/25/difference-in-differences-methodology/">Andrew Baker</a>. See also <span class="citation" data-cites="goodman-bacon2021">Goodman-Bacon (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span>, <span class="citation" data-cites="callaway2021a">Callaway and Sant’Anna (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span>, <span class="citation" data-cites="sun2021">Sun and Abraham (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+</div></aside></section>
+<section id="key-assumption-parallel-trends" class="slide level2">
+<h2>Key Assumption: Parallel Trends</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/gertler-parallel.png" class="quarto-figure quarto-figure-center" style="width:120.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:70%;">
+<ul>
+<li><p>Basic DD controls for any time invariant characteristics of both treated and control groups.</p></li>
+<li><p>Does not control for any <strong>time-varying</strong> characteristics.</p></li>
+<li><p>If another policy/intervention occurs in the treated (or control) group at the same time as the intervention, we cannot cleanly identify the effect of the program.</p></li>
+<li><p>DD main assumption: in the absence of the intervention treated and control groups would have displayed similar <strong>trends</strong>.</p></li>
+<li><p>This is called the <em>parallel trends</em> assumption.</p></li>
+</ul>
+</div></div>
+
+<aside><div>
+<p>Impossible to verify, see <span class="citation" data-cites="gertler2016">Gertler et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span>.</p>
+</div></aside></section>
+<section id="statistical-model" class="slide level2" data-background-image="images/dag-te-shown.png" data-background-size="30%" data-background-position="top 1% left 98%">
+<h2>Statistical model</h2>
+<p>Total effect via “extended” two-way fixed effects: <span class="math display">\[Y_{ijt}= \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs} (d_{r} \times fs_{t}) + \mathbf{Z}_{ijt} + \varepsilon_{ijt}\]</span> <span class="math inline">\(X\)</span> includes:</p>
+<ul>
+<li><span class="math inline">\(d_{r}\)</span> = treatment cohort fixed effects<br>
+</li>
+<li><span class="math inline">\(fs_{t}\)</span> = time fixed effects<br>
+</li>
+<li><span class="math inline">\(\mathbf{Z}_{ijt}\)</span> = time-varying covariates</li>
+</ul>
+<p>TE is average of marginal <em>ATT</em>s <span class="math inline">\(\color{blue}\tau_{rs}\)</span>, averaged over cohort and time.</p>
+
+<aside><div>
+<p>See <span class="citation" data-cites="wooldridge2021">Wooldridge (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span>, <span class="citation" data-cites="goin2023">Goin and Riddell (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p>
+</div></aside></section></section>
+<section>
+<section id="what-did-we-find" class="title-slide slide level1 center">
+<h1>What Did We Find?</h1>
+
+</section>
+<section id="treatment-groups-were-generally-balanced" class="slide level2">
+<h2>Treatment groups were generally balanced</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="table-responsive">
+<table class="table table-striped table-hover table-condensed caption-top" data-quarto-postprocess="true" style="font-size: 30px; width: auto !important; margin-left: auto; margin-right: auto;">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; empty-cells: hide; border-bottom: hidden;"></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Never treated (N=603)
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Ever treated (N=400)
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: left; empty-cells: hide; border-bottom: hidden;"></th>
+</tr>
+<tr class="odd">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">SD</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">SD</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Diff</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">SE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Age (years)</td>
+<td style="text-align: left;">59.9</td>
+<td style="text-align: left;">9.4</td>
+<td style="text-align: left;">60.4</td>
+<td style="text-align: left;">9.2</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">0.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Female (%)</td>
+<td style="text-align: left;">59.5</td>
+<td style="text-align: left;">49.1</td>
+<td style="text-align: left;">60.0</td>
+<td style="text-align: left;">49.1</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">3.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Secondary+ education (%)</td>
+<td style="text-align: left;">12.6</td>
+<td style="text-align: left;">33.2</td>
+<td style="text-align: left;">9.8</td>
+<td style="text-align: left;">29.7</td>
+<td style="text-align: left;">-2.9</td>
+<td style="text-align: left;">2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Wealth index (bottom 25%)</td>
+<td style="text-align: left;">26.9</td>
+<td style="text-align: left;">44.4</td>
+<td style="text-align: left;">22.3</td>
+<td style="text-align: left;">41.7</td>
+<td style="text-align: left;">-4.6</td>
+<td style="text-align: left;">2.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Current smoker (%)</td>
+<td style="text-align: left;">26.2</td>
+<td style="text-align: left;">44.0</td>
+<td style="text-align: left;">25.4</td>
+<td style="text-align: left;">43.6</td>
+<td style="text-align: left;">-0.8</td>
+<td style="text-align: left;">2.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Daily drinker (%)</td>
+<td style="text-align: left;">17.8</td>
+<td style="text-align: left;">38.3</td>
+<td style="text-align: left;">21.9</td>
+<td style="text-align: left;">41.4</td>
+<td style="text-align: left;">4.1</td>
+<td style="text-align: left;">2.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Systolic (mmHg)</td>
+<td style="text-align: left;">131.4</td>
+<td style="text-align: left;">16.8</td>
+<td style="text-align: left;">128.7</td>
+<td style="text-align: left;">14.3</td>
+<td style="text-align: left;">-2.7</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Diastolic (mmHg)</td>
+<td style="text-align: left;">82.7</td>
+<td style="text-align: left;">11.6</td>
+<td style="text-align: left;">82.1</td>
+<td style="text-align: left;">11.3</td>
+<td style="text-align: left;">-0.6</td>
+<td style="text-align: left;">0.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Body mass index (kg/m2)</td>
+<td style="text-align: left;">26.3</td>
+<td style="text-align: left;">3.7</td>
+<td style="text-align: left;">25.8</td>
+<td style="text-align: left;">3.6</td>
+<td style="text-align: left;">-0.5</td>
+<td style="text-align: left;">0.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Any respiratory problem (%)</td>
+<td style="text-align: left;">50.6</td>
+<td style="text-align: left;">50.0</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">49.9</td>
+<td style="text-align: left;">3.7</td>
+<td style="text-align: left;">3.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 5in;">Temperature (°C)</td>
+<td style="text-align: left;">13.8</td>
+<td style="text-align: left;">3.6</td>
+<td style="text-align: left;">13.5</td>
+<td style="text-align: left;">3.3</td>
+<td style="text-align: left;">-0.3</td>
+<td style="text-align: left;">0.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 5in;">Personal PM2.5 (ug/m3)</td>
+<td style="text-align: left;">127.1</td>
+<td style="text-align: left;">145.3</td>
+<td style="text-align: left;">102.3</td>
+<td style="text-align: left;">105.5</td>
+<td style="text-align: left;">-24.7</td>
+<td style="text-align: left;">11.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+</div>
+</section>
+<section id="treated-households-adopted-cleaner-energy" class="slide level2">
+<h2>Treated households adopted cleaner energy</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sankey-w2.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section id="treated-households-adopted-cleaner-energy-1" class="slide level2">
+<h2>Treated households adopted cleaner energy</h2>
+<p><span class="large"><em>At the time of treatment</em></span></p>
+<p><img data-src="images/sanky.jpg"></p>
+</section>
+<section id="treated-households-reported-less-coal-use" class="slide level2">
+<h2>Treated households reported less coal use</h2>
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/coal-plot.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<div id="title-slide" class="center">
+<p><span class="blue large"><strong>Did the policy affect outcomes?</strong></span></p>
+</div>
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dag-te-shown.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</section>
+<section id="evidence-of-parallel-pre-trends-for-bp" class="slide level2">
+<h2>Evidence of parallel pre-trends for BP</h2>
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/bp-pretrends.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</section>
+<section id="impact-on-blood-pressure" class="slide level2" data-background-image="images/dag-te-shown.png" data-background-size="15%" data-background-position="top 1% left 98%">
+<h2>Impact on blood pressure</h2>
+<div class="columns">
+<div class="column" style="width:95%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="asm_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div></div>
+
+<aside><div>
+<p>Time-varying covariates: age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.</p>
+</div></aside></section>
+<section id="some-evidence-of-heterogeneity" class="slide level2">
+<h2>Some evidence of heterogeneity</h2>
+<p><img data-src="images/bp-het.png"></p>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p>Reductions in some self-reported respiratory symptoms.</p>
+<p><br></p>
+<p>Little evidence of impact on inflammatory markers.</p>
+</div><div class="column" style="width:80%;">
+<div class="cell">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script>
+      function styleCell_4jgoo2dh6txbb7v3wir7(i, j, css_id) {
+        var table = document.getElementById("tinytable_4jgoo2dh6txbb7v3wir7");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow_pxkb7mkebshcgrc9vetq(i, colspan, content) {
+        var table = document.getElementById('tinytable_4jgoo2dh6txbb7v3wir7');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_4jgoo2dh6txbb7v3wir7(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_4jgoo2dh6txbb7v3wir7");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+window.addEventListener('load', function () { insertSpanRow_pxkb7mkebshcgrc9vetq(8, 5, 'Inflammatory markers') });
+window.addEventListener('load', function () { insertSpanRow_pxkb7mkebshcgrc9vetq(1, 5, 'Respiratory outcomes') });
+window.addEventListener('load', function () { spanCell_4jgoo2dh6txbb7v3wir7(2, 0, 6, 1) })
+window.addEventListener('load', function () { spanCell_4jgoo2dh6txbb7v3wir7(10, 0, 4, 1) })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(-1, 0, 'tinytable_css_idrcjd93dp5te0krlpv35n') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(-1, 1, 'tinytable_css_idrcjd93dp5te0krlpv35n') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(-1, 2, 'tinytable_css_idrcjd93dp5te0krlpv35n') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(-1, 3, 'tinytable_css_idrcjd93dp5te0krlpv35n') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(-1, 4, 'tinytable_css_idrcjd93dp5te0krlpv35n') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(0, 0, 'tinytable_css_id1mzmq3lfxfxbebwt5lqp') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(0, 1, 'tinytable_css_id1mzmq3lfxfxbebwt5lqp') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(0, 2, 'tinytable_css_id1mzmq3lfxfxbebwt5lqp') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(0, 3, 'tinytable_css_id1mzmq3lfxfxbebwt5lqp') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(0, 4, 'tinytable_css_id1mzmq3lfxfxbebwt5lqp') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(1, 0, 'tinytable_css_idxhjrqyuxwi3u94fftpll') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(1, 1, 'tinytable_css_idxhjrqyuxwi3u94fftpll') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(1, 2, 'tinytable_css_idxhjrqyuxwi3u94fftpll') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(1, 3, 'tinytable_css_idxhjrqyuxwi3u94fftpll') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(1, 4, 'tinytable_css_idxhjrqyuxwi3u94fftpll') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(2, 0, 'tinytable_css_idy3vsm2jsgp33ga5hvw9k') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(2, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(2, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(2, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(2, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(3, 0, 'tinytable_css_idfz0f9j715xxbdemeys6s') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(3, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(3, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(3, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(3, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(4, 0, 'tinytable_css_idfz0f9j715xxbdemeys6s') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(4, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(4, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(4, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(4, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(5, 0, 'tinytable_css_idfz0f9j715xxbdemeys6s') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(5, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(5, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(5, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(5, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(6, 0, 'tinytable_css_idfz0f9j715xxbdemeys6s') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(6, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(6, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(6, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(6, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(7, 0, 'tinytable_css_idfz0f9j715xxbdemeys6s') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(7, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(7, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(7, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(7, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(8, 0, 'tinytable_css_idfz0f9j715xxbdemeys6s') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(8, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(8, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(8, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(8, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(9, 0, 'tinytable_css_idxhjrqyuxwi3u94fftpll') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(9, 1, 'tinytable_css_idxhjrqyuxwi3u94fftpll') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(9, 2, 'tinytable_css_idxhjrqyuxwi3u94fftpll') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(9, 3, 'tinytable_css_idxhjrqyuxwi3u94fftpll') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(9, 4, 'tinytable_css_idxhjrqyuxwi3u94fftpll') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(10, 0, 'tinytable_css_idy3vsm2jsgp33ga5hvw9k') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(10, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(10, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(10, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(10, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(11, 0, 'tinytable_css_idfz0f9j715xxbdemeys6s') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(11, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(11, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(11, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(11, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(12, 0, 'tinytable_css_idfz0f9j715xxbdemeys6s') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(12, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(12, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(12, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(12, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(13, 0, 'tinytable_css_idfz0f9j715xxbdemeys6s') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(13, 1, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(13, 2, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(13, 3, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+window.addEventListener('load', function () { styleCell_4jgoo2dh6txbb7v3wir7(13, 4, 'tinytable_css_idyii7amwfr7xhyhg7mycg') })
+    </script>
+
+    <style>
+    .table td.tinytable_css_idrcjd93dp5te0krlpv35n, .table th.tinytable_css_idrcjd93dp5te0krlpv35n {  text-align: center; }
+    .table td.tinytable_css_id1mzmq3lfxfxbebwt5lqp, .table th.tinytable_css_id1mzmq3lfxfxbebwt5lqp {  font-size: 0.8em;  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_idxhjrqyuxwi3u94fftpll, .table th.tinytable_css_idxhjrqyuxwi3u94fftpll {  font-size: 0.8em;  font-weight: bold; text-align: left; }
+    .table td.tinytable_css_idy3vsm2jsgp33ga5hvw9k, .table th.tinytable_css_idy3vsm2jsgp33ga5hvw9k {  font-size: 0.8em;  vertical-align: top; padding-left: 1em; }
+    .table td.tinytable_css_idyii7amwfr7xhyhg7mycg, .table th.tinytable_css_idyii7amwfr7xhyhg7mycg {  font-size: 0.8em; }
+    .table td.tinytable_css_idfz0f9j715xxbdemeys6s, .table th.tinytable_css_idfz0f9j715xxbdemeys6s {  font-size: 0.8em; padding-left: 1em; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_4jgoo2dh6txbb7v3wir7" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col"> </th>
+                <th scope="col">Obs</th>
+                <th scope="col">ATT</th>
+                <th scope="col">(95% CI)</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>Self-reported (pp)</td>
+                  <td>Any symptom      </td>
+                  <td>3076</td>
+                  <td>-7.5</td>
+                  <td>(-12.7, -2.3)</td>
+                </tr>
+                <tr>
+                  <td>Self-reported (pp)</td>
+                  <td>Coughing         </td>
+                  <td>3076</td>
+                  <td>-2.7</td>
+                  <td>(-7.1, 1.7)  </td>
+                </tr>
+                <tr>
+                  <td>Self-reported (pp)</td>
+                  <td>Phlegm           </td>
+                  <td>3076</td>
+                  <td>-1.6</td>
+                  <td>(-5.6, 2.4)  </td>
+                </tr>
+                <tr>
+                  <td>Self-reported (pp)</td>
+                  <td>Wheezing attacks </td>
+                  <td>3076</td>
+                  <td>1.0</td>
+                  <td>(-1.9, 3.9)  </td>
+                </tr>
+                <tr>
+                  <td>Self-reported (pp)</td>
+                  <td>Trouble breathing</td>
+                  <td>3076</td>
+                  <td>-3.4</td>
+                  <td>(-9.2, 2.4)  </td>
+                </tr>
+                <tr>
+                  <td>Self-reported (pp)</td>
+                  <td>Chest trouble    </td>
+                  <td>3076</td>
+                  <td>-3.4</td>
+                  <td>(-8.1, 1.3)  </td>
+                </tr>
+                <tr>
+                  <td>Measured          </td>
+                  <td>FeNO (ppb)       </td>
+                  <td> 793</td>
+                  <td>0.3</td>
+                  <td>(-2.2, 2.8)  </td>
+                </tr>
+                <tr>
+                  <td>Measured          </td>
+                  <td>IL6 (pg/mL)      </td>
+                  <td>1603</td>
+                  <td>0.8</td>
+                  <td>(-0.3, 2.0)  </td>
+                </tr>
+                <tr>
+                  <td>Measured          </td>
+                  <td>TNF-alpha (pg/mL)</td>
+                  <td>1603</td>
+                  <td>0.8</td>
+                  <td>(-0.1, 1.7)  </td>
+                </tr>
+                <tr>
+                  <td>Measured          </td>
+                  <td>CRP (mg/L)       </td>
+                  <td>1603</td>
+                  <td>0.1</td>
+                  <td>(-0.5, 0.6)  </td>
+                </tr>
+                <tr>
+                  <td>Measured          </td>
+                  <td>MDA (µM)         </td>
+                  <td>1603</td>
+                  <td>0.2</td>
+                  <td>(-0.2, 0.6)  </td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+</div></div>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<div id="title-slide" class="center">
+<p><span class="blue large"><strong>Did the policy affect the mediators?</strong></span></p>
+</div>
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dag-t-on-m.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</section>
+<section id="policy-reduced-only-indoor-pm" class="slide level2" data-background-image="images/dag-t-on-m.png" data-background-size="15%" data-background-position="top 1% left 98%">
+<h2>Policy reduced (only) indoor PM</h2>
+<div class="columns">
+<div class="column" style="width:95%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="asm_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div></div>
+
+<aside><div>
+<p>ETWFE models adjusted for household size, smoking, outdoor temperature, and outdoor dewpoint.</p>
+</div></aside></section>
+<section id="policy-increased-indoor-temperature" class="slide level2" data-background-image="images/dag-t-on-m.png" data-background-size="15%" data-background-position="top 1% left 98%">
+<h2>Policy increased indoor temperature</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="asm_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>ETWFE models adjusted for the number of rooms and wintertime occupants in the household, age of the primary respondent, and wealth index.</p>
+</div></aside></section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<div id="title-slide" class="center">
+<p><span class="blue large"><strong>Do PM<sub>2.5</sub> and temperature mediate the BP effect?</strong></span></p>
+</div>
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dag-cde-shown.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</section>
+<section id="bp-mostly-mediated-by-pm2.5-and-temp" class="slide level2" data-background-image="images/dag-cde-shown.png" data-background-size="15%" data-background-position="top 1% left 98%">
+<h2>BP mostly mediated by PM<sub>2.5</sub> and temp</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="asm_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>ETWFE model with exposure-mediator interaction, adjusted for time-varying covariates.</p>
+</div></aside></section>
+<section id="little-mediation-for-respiratory-symptoms" class="slide level2">
+<h2>Little mediation for respiratory symptoms</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="asm_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="what-does-it-mean" class="title-slide slide level1 center">
+<h1>What Does It Mean?</h1>
+
+</section>
+<section id="uptake" class="slide level2">
+<h2>Uptake</h2>
+<ul>
+<li>High uptake and consistent use of the new heat pump technology.</li>
+<li>Persistent effects for early treated villages.</li>
+<li>Large reductions in coal use in treated villages.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/transition-fig.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</section>
+<section id="impacts" class="slide level2">
+<h2>Impacts</h2>
+<h3 id="air-pollution">Air pollution</h3>
+<ul>
+<li>Impacts on indoor PM<sub>2.5</sub> but not personal exposures or outdoor PM<sub>2.5</sub></li>
+<li>Secular trends affected by large-scale policy changes</li>
+<li>Movement between indoor and outdoor</li>
+</ul>
+<h3 id="health-outcomes">Health outcomes</h3>
+<ul>
+<li>Overall lower BP, some evidence of heterogeneity</li>
+<li>Improvements in respiratory symptoms</li>
+<li>BP impacts largely mediated by PM<sub>2.5</sub> and temperature</li>
+</ul>
+</section>
+<section id="section-6" class="slide level2 center" data-background-image="images/mcgill-university.jpg">
+<h2></h2>
+<div id="title-slide" class="center">
+<h3 id="questions"><span class="white">Questions?</span></h3>
+<p><span class="white">sam.harper@mcgill.ca</span><br>
+<span class="white">samharper.org</span></p>
+</div>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-baumgartner2011" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1289/ehp.1003371">Baumgartner, J., Schauer, J.J., Ezzati, M., Lu, L., Cheng, C., Patz, J.A., Bautista, L.E., 2011. Environmental Health Perspectives 119, 1390–5.</a>
+</div>
+<div id="ref-callaway2021a" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1016/j.jeconom.2020.12.001">Callaway, B., Sant’Anna, P.H.C., 2021. Journal of Econometrics, Themed <span>Issue</span>: <span>Treatment Effect</span> 1 225, 200–230.</a>
+</div>
+<div id="ref-gertler2016" class="csl-entry" role="listitem">
+Gertler, P.J., Martinez, S., Premand, P., Rawlings, L.B., Vermeersch, C.M., 2016. Impact evaluation in practice. World Bank Publications.
+</div>
+<div id="ref-goin2023" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1097/EDE.0000000000001611">Goin, D.E., Riddell, C.A., 2023. Epidemiology 34, 535.</a>
+</div>
+<div id="ref-goodman-bacon2021" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1016/j.jeconom.2021.03.014">Goodman-Bacon, A., 2021. Journal of Econometrics, Themed <span>Issue</span>: <span>Treatment Effect</span> 1 225, 254–277.</a>
+</div>
+<div id="ref-harper2012" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1097/EDE.0b013e31826d078d">Harper, S., Strumpf, E.C., 2012. Epidemiology 23, 795–798.</a>
+</div>
+<div id="ref-lai2024" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1164/rccm.202402-0398ST">Lai, P.S., Lam, N.L., Gallery, B., Lee, A.G., Adair-Rohani, H., Alexander, D., Balakrishnan, K., Bisaga, I., Chafe, Z.A., Clasen, T., Díaz-Artiga, A., Grieshop, A., Harrison, K., Hartinger, S.M., Jack, D., Kaali, S., Lydston, M., Mortimer, K.M., Nicolaou, L., Obonyo, E., Okello, G., Olopade, C., Pillarisetti, A., Pinto, A.N., Rosenthal, J.P., Schluger, N., Shi, X., Thompson, C., Thompson, L.M., Volckens, J., Williams, K.N., Balmes, J., Checkley, W., Ozoh, O.B., 2024. Am J Respir Crit Care Med 209, 909–927.</a>
+</div>
+<div id="ref-lewington2012" class="csl-entry" role="listitem">
+Lewington, S., LiMing, L., Sherliker, P., Yu, G., Millwood, I., Zheng, B., Whitlock, G., Ling, Y., Collins, R., Junshi, C., others, 2012. Journal of hypertension 30, 1383.
+</div>
+<div id="ref-liu2016" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1073/pnas.1604537113">Liu, J., Mauzerall, D.L., Chen, Q., Zhang, Q., Song, Y., Peng, W., Klimont, Z., Qiu, X., Zhang, S., Hu, M., Lin, W., Smith, K.R., Zhu, T., 2016. Proceedings of The National Academy Of Sciences Of The United States Of America 113, 7756–61.</a>
+</div>
+<div id="ref-sternbach2022" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1097/HJH.0000000000003198">Sternbach, T.J., Harper, S., Li, X., Zhang, X., Carter, E., Zhang, Y., Shen, G., Fan, Z., Zhao, L., Tao, S., Baumgartner, J., 2022. J Hypertension 40, 1950–1959.</a>
+</div>
+<div id="ref-sun2021" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1016/j.jeconom.2020.09.006">Sun, L., Abraham, S., 2021. Journal of Econometrics, Themed <span>Issue</span>: <span>Treatment Effect</span> 1 225, 175–199.</a>
+</div>
+<div id="ref-vanderweele2015" class="csl-entry" role="listitem">
+VanderWeele, T.J., 2015. Explanation in causal inference: Methods for mediation and interaction. Oxford University Press, New York.
+</div>
+<div id="ref-wooldridge2021" class="csl-entry" role="listitem">
+Wooldridge, J.M., 2021. Two-<span>Way Fixed Effects</span>, the <span>Two-Way Mundlak Regression</span>, and <span class="nocase">Difference-in-Differences Estimators</span> [WWW Document]. URL <a href="https://papers.ssrn.com/abstract=3906345">https://papers.ssrn.com/abstract=3906345</a> (accessed 2.10.2023).
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
